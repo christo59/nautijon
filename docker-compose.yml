@@ -1,0 +1,10 @@
+neo4j2:
+  restart: always
+  image: neo4j:3.5.14
+  container_name: neo4j2
+  ports:
+    - "7474:7474"
+    - "7687:7687"
+  volumes:
+    - /data2/neo4j/conf/conf/:/conf
+    - /data2/neo4j/data/data/:/data/
