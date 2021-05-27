@@ -6,13 +6,15 @@ public class JeuVideo extends Theme {
     private String createur;
     private String modeDeJeu;
     private String plateforme;
+    private String resume;
 
-    public JeuVideo(String imagePath, String titre, String langue, String dateSortie, String genre, Double note, String type, String createur, String modeDeJeu, String plateforme) {
+    public JeuVideo(String imagePath, String titre, String langue, String dateSortie, String genre, Double note, String type, String createur, String modeDeJeu, String plateforme, String resume) {
         super(imagePath, titre, langue, dateSortie, genre, note);
         this.type = type;
         this.createur = createur;
         this.modeDeJeu = modeDeJeu;
         this.plateforme = plateforme;
+        this.resume = resume;
     }
 
     public String getType() {
@@ -45,5 +47,13 @@ public class JeuVideo extends Theme {
 
     public void setPlateforme(String plateforme) {
         this.plateforme = plateforme;
+    }
+
+    public String getResume() {
+        return resume;
+    }
+
+    public void setResume(String resume) {
+        this.resume = resume;
     }
 }

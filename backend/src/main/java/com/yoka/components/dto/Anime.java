@@ -8,8 +8,9 @@ public class Anime extends Theme {
     private String theme;
     private String editeur;
     private String studioAnimation;
+    private String resume;
 
-    public Anime(String imagePath, String titre, String langue, String dateSortie, String genre, Double note, String createur, String type, String nbEpisode, String theme, String editeur, String studioAnimation) {
+    public Anime(String imagePath, String titre, String langue, String dateSortie, String genre, Double note, String createur, String type, String nbEpisode, String theme, String editeur, String studioAnimation, String resume) {
         super(imagePath, titre, langue, dateSortie, genre, note);
         this.createur = createur;
         this.type = type;
@@ -17,6 +18,7 @@ public class Anime extends Theme {
         this.theme = theme;
         this.editeur = editeur;
         this.studioAnimation = studioAnimation;
+        this.resume = resume;
     }
 
     public String getType() {
@@ -57,5 +59,21 @@ public class Anime extends Theme {
 
     public void setStudioAnimation(String studioAnimation) {
         this.studioAnimation = studioAnimation;
+    }
+
+    public String getResume() {
+        return resume;
+    }
+
+    public void setResume(String resume) {
+        this.resume = resume;
+    }
+
+    public String getCreateur() {
+        return createur;
+    }
+
+    public void setCreateur(String createur) {
+        this.createur = createur;
     }
 }

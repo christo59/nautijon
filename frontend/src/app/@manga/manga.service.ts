@@ -2,7 +2,6 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Manga} from "./beans/Manga";
-import {Anime} from "../@anime/beans/Anime";
 
 @Injectable()
 export class MangaService {
@@ -15,7 +14,7 @@ export class MangaService {
     }
 
     public addManga(manga: Manga): Observable<Manga>{
-        return this._http.post<Manga>("/manga",manga)
+        return this._http.post<Manga>("/manga/add",manga)
     }
 
 }

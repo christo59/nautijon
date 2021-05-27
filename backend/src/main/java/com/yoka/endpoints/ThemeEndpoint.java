@@ -20,11 +20,11 @@ public class ThemeEndpoint {
     public ResponseEntity<List<Musique>> listMusic(){
 //        return new ResponseEntity<>(themeComponent.getMusicList(), HttpStatus.OK);
         List<Musique> toReturn = new ArrayList<>();
-        toReturn.add(new Musique("path","titre","langue", "date","genre",5.0, "interprete", "album", "duree", "producteur"));
+        toReturn.add(new Musique("path","titre","langue", "date","genre",5.0, "interprete", "album", "duree", "producteur", "paroles"));
         return new ResponseEntity<>(toReturn, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/musique")
+    @PostMapping(value = "/musique/add")
     public ResponseEntity<Musique> addMusic(@RequestBody Musique musique) {
         return new ResponseEntity<>(themeComponent.addMusic(musique), HttpStatus.CREATED);
     }
@@ -33,11 +33,11 @@ public class ThemeEndpoint {
     public ResponseEntity<List<JeuVideo>> listVideoGames(){
 //        return new ResponseEntity<>(themeComponent.getVideoGameList(), HttpStatus.OK);
         List<JeuVideo> toReturn = new ArrayList<>();
-        toReturn.add(new JeuVideo("path","titre","langue", "date","genre",5.0, "type", "createur", "mode de jeu", "plateforme"));
+        toReturn.add(new JeuVideo("path","titre","langue", "date","genre",5.0, "type", "createur", "mode de jeu", "plateforme", "resume"));
         return new ResponseEntity<>(toReturn, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/jeuVideo")
+    @PostMapping(value = "/jeuVideo/add")
     public ResponseEntity<JeuVideo> addVideoGame(@RequestBody JeuVideo jeuVideo) {
         return new ResponseEntity<>(themeComponent.addVideoGame(jeuVideo), HttpStatus.CREATED);
     }
@@ -46,11 +46,11 @@ public class ThemeEndpoint {
     public ResponseEntity<List<Manga>> listManga(){
 //        return new ResponseEntity<>(themeComponent.getMangaList(), HttpStatus.OK);
         List<Manga> toReturn = new ArrayList<>();
-        toReturn.add(new Manga("path","titre","langue", "date","genre",5.0, "nombre de chapitre", "theme", "editeur", "type"));
+        toReturn.add(new Manga("path","titre","langue", "date","genre",5.0, "nombre de chapitre", "theme", "editeur", "type", "resume"));
         return new ResponseEntity<>(toReturn, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/manga")
+    @PostMapping(value = "/manga/add")
     public ResponseEntity<Manga> addManga(@RequestBody Manga manga) {
         return new ResponseEntity<>(themeComponent.addManga(manga), HttpStatus.CREATED);
     }
@@ -59,11 +59,11 @@ public class ThemeEndpoint {
     public ResponseEntity<List<Anime>> listAnime(){
 //        return new ResponseEntity<>(themeComponent.getAnimeList(), HttpStatus.OK);
         List<Anime> toReturn = new ArrayList<>();
-        toReturn.add(new Anime("path","titre","langue", "date","genre",5.0, "createur", "type", "nombre d'episode", "theme", "editeur", "studio d'animation"));
+        toReturn.add(new Anime("path","titre","langue", "date","genre",5.0, "createur", "type", "nombre d'episode", "theme", "editeur", "studio d'animation", "resume"));
         return new ResponseEntity<>(toReturn, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/anime")
+    @PostMapping(value = "/anime/add")
     public ResponseEntity<Anime> addAnime(@RequestBody Anime anime) {
         return new ResponseEntity<>(themeComponent.addAnime(anime), HttpStatus.CREATED);
     }
@@ -72,11 +72,11 @@ public class ThemeEndpoint {
     public ResponseEntity<List<Serie>> listSerie(){
 //        return new ResponseEntity<>(themeComponent.getSerieList(), HttpStatus.OK);
         List<Serie> toReturn = new ArrayList<>();
-        toReturn.add(new Serie("path","titre","langue", "date","genre",5.0, "auteur", "type", "nombre d'episode", "theme", "societe de production"));
+        toReturn.add(new Serie("path","titre","langue", "date","genre",5.0, "auteur", "type", "nombre d'episode", "theme", "societe de production", "resume"));
         return new ResponseEntity<>(toReturn, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/serie")
+    @PostMapping(value = "/serie/add")
     public ResponseEntity<Serie> addSerie(@RequestBody Serie serie) {
         return new ResponseEntity<>(themeComponent.addSerie(serie), HttpStatus.CREATED);
     }
@@ -85,11 +85,11 @@ public class ThemeEndpoint {
     public ResponseEntity<List<Film>> listFilm(){
 //        return new ResponseEntity<>(themeComponent.getFilmList(), HttpStatus.OK);
         List<Film> toReturn = new ArrayList<>();
-        toReturn.add(new Film("path","titre","langue", "date","genre",5.0, "realisateur", "type", "duree", "theme", "societe de production"));
+        toReturn.add(new Film("path","titre","langue", "date","genre",5.0, "realisateur", "type", "duree", "theme", "societe de production", "resume"));
         return new ResponseEntity<>(toReturn, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/film")
+    @PostMapping(value = "/film/add")
     public ResponseEntity<Film> addFilm(@RequestBody Film film) {
         return new ResponseEntity<>(themeComponent.addFilm(film), HttpStatus.CREATED);
     }

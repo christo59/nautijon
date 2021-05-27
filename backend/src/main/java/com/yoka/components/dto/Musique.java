@@ -9,13 +9,15 @@ public class Musique extends Theme {
     private String album;
     private String duree;
     private String producteur;
+    private String paroles;
 
-    public Musique(String imagePath, String titre, String langue, String dateSortie, String genre, Double note, String interprete, String album, String duree, String producteur) {
+    public Musique(String imagePath, String titre, String langue, String dateSortie, String genre, Double note, String interprete, String album, String duree, String producteur, String paroles) {
         super(imagePath, titre, langue, dateSortie, genre, note);
         this.interprete = interprete;
         this.album = album;
         this.duree = duree;
         this.producteur = producteur;
+        this.paroles = paroles;
     }
 
     public String getInterprete() {
@@ -48,5 +50,13 @@ public class Musique extends Theme {
 
     public void setProducteur(String producteur) {
         this.producteur = producteur;
+    }
+
+    public String getParoles() {
+        return paroles;
+    }
+
+    public void setParoles(String paroles) {
+        this.paroles = paroles;
     }
 }
