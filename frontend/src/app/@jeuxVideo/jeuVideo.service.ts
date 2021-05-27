@@ -15,7 +15,7 @@ export class JeuVideoService {
     }
 
     public addVideoGame(jeuVideo: JeuVideo): Observable<JeuVideo>{
-        return this._http.post("/jeuVideo",jeuVideo)
+        return this._http.post<JeuVideo>("/jeuVideo",jeuVideo)
     }
 
 }

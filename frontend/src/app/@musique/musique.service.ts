@@ -15,7 +15,7 @@ export class MusiqueService {
     }
 
     public addMusic(musique: Musique): Observable<Musique>{
-        return this._http.post("/musique",musique)
+        return this._http.post<Musique>("/musique",musique)
     }
 
 }

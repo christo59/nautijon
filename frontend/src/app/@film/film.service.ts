@@ -15,7 +15,7 @@ export class FilmService {
     }
 
     public addFilm(film: Film): Observable<Film>{
-        return this._http.post("/film",film)
+        return this._http.post<Film>("/film",film)
     }
 
 }

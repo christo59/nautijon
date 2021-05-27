@@ -15,7 +15,7 @@ export class MangaService {
     }
 
     public addManga(manga: Manga): Observable<Manga>{
-        return this._http.post("/manga",manga)
+        return this._http.post<Manga>("/manga",manga)
     }
 
 }

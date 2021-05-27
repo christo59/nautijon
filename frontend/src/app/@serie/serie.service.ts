@@ -14,7 +14,7 @@ export class SerieService {
     }
 
     public addSerie(serie: Serie): Observable<Serie>{
-        return this._http.post("/serie",serie)
+        return this._http.post<Serie>("/serie",serie)
     }
 
 }
