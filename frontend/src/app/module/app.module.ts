@@ -15,6 +15,10 @@ import {MangaComponent} from "../@manga/manga.component";
 import {MangaService} from "../@manga/manga.service";
 import {AnimeComponent} from "../@anime/anime.component";
 import {AnimeService} from "../@anime/anime.service";
+import {SerieComponent} from "../@serie/serie.component";
+import {SerieService} from "../@serie/serie.service";
+import {FilmComponent} from "../@film/film.component";
+import {FilmService} from "../@film/film.service";
 
 @NgModule({
   declarations: [
@@ -25,7 +29,9 @@ import {AnimeService} from "../@anime/anime.service";
       MusiqueComponent,
       JeuVideoComponent,
       MangaComponent,
-      AnimeComponent
+      AnimeComponent,
+      SerieComponent,
+      FilmComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +42,9 @@ import {AnimeService} from "../@anime/anime.service";
       MusiqueService,
       JeuVideoService,
       MangaService,
-      AnimeService
+      AnimeService,
+      SerieService,
+      FilmService
   ],
   bootstrap: [AppComponent]
 })

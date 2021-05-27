@@ -1,5 +1,5 @@
 import {Component,OnInit} from "@angular/core";
-import {JeuxVideo} from "./beans/JeuxVideo";
+import {JeuVideo} from "./beans/JeuVideo";
 import {JeuVideoService} from "./jeuVideo.service";
 
 @Component({
@@ -9,7 +9,7 @@ import {JeuVideoService} from "./jeuVideo.service";
 })
 export class JeuVideoComponent {
 
-    private _videoGameList: JeuxVideo[];
+    private _videoGameList: JeuVideo[];
 
     constructor(private jeuVideoService: JeuVideoService) {}
 

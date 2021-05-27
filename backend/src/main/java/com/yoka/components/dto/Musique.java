@@ -1,15 +1,10 @@
 package com.yoka.components.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.neo4j.ogm.annotation.Id;
 import org.springframework.data.neo4j.annotation.QueryResult;
 
 @QueryResult
 public class Musique extends Theme {
 
-    @Id
-    @JsonIgnore
-    private Long id;
     private String interprete;
     private String album;
     private String duree;

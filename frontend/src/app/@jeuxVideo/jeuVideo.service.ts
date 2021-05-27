@@ -1,7 +1,8 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {JeuxVideo} from "./beans/JeuxVideo";
+import {JeuVideo} from "./beans/JeuVideo";
+import {Anime} from "../@anime/beans/Anime";
 
 @Injectable()
 export class JeuVideoService {
@@ -9,8 +10,12 @@ export class JeuVideoService {
     constructor(
         private _http: HttpClient) {}
 
-    public getVideoGameList(): Observable<JeuxVideo[]>{
-        return this._http.get<JeuxVideo[]>("/jeuxVideos");
+    public getVideoGameList(): Observable<JeuVideo[]>{
+        return this._http.get<JeuVideo[]>("/jeuxVideos");
+    }
+
+    public addVideoGame(jeuVideo: JeuVideo): Observable<JeuVideo>{
+        return this._http.post("/jeuVideo",jeuVideo)
     }
 
 }

@@ -5,6 +5,8 @@ import {JeuVideoComponent} from "./@jeuxVideo/jeuVideo.component";
 import {MangaComponent} from "./@manga/manga.component";
 import {AnimeComponent} from "./@anime/anime.component";
 import {NgModule} from "@angular/core";
+import {SerieComponent} from "./@serie/serie.component";
+import {FilmComponent} from "./@film/film.component";
 
 
 const routes: Routes = [
@@ -13,7 +15,9 @@ const routes: Routes = [
   {path: 'musique', component: MusiqueComponent},
   {path: 'jeuVideo', component: JeuVideoComponent},
   {path: 'manga', component: MangaComponent},
-  {path: 'anime', component: AnimeComponent}
+  {path: 'anime', component: AnimeComponent},
+  {path: 'serie', component: SerieComponent},
+  {path: 'film', component: FilmComponent},
   ];
 
 

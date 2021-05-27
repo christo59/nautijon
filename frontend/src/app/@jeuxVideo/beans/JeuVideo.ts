@@ -1,4 +1,4 @@
-export class JeuxVideo {
+export class JeuVideo {
 
     public imagePath: string = "";
     public titre: string = "";

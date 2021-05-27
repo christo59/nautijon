@@ -1,4 +1,4 @@
-export class Anime {
+export class Serie {
 
     public imagePath: string = "";
     public titre: string = "";
@@ -6,10 +6,10 @@ export class Anime {
     public dateSortie: Date;
     public genre: string = "";
     public note: Number = 0.0;
-    public createur: string = "";
+    public realisateur: string = "";
     public type: string = "";
     public nbEpisode: string = "";
     public theme: string = "";
-    public studioAnimation: string = "";
+    public societeProduction: string = "";
 
 }

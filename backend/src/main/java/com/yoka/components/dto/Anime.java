@@ -2,14 +2,16 @@ package com.yoka.components.dto;
 
 public class Anime extends Theme {
 
+    private String createur;
     private String type;
     private String nbEpisode;
     private String theme;
     private String editeur;
     private String studioAnimation;
 
-    public Anime(String imagePath, String titre, String langue, String dateSortie, String genre, Double note, String type, String nbEpisode, String theme, String editeur, String studioAnimation) {
+    public Anime(String imagePath, String titre, String langue, String dateSortie, String genre, Double note, String createur, String type, String nbEpisode, String theme, String editeur, String studioAnimation) {
         super(imagePath, titre, langue, dateSortie, genre, note);
+        this.createur = createur;
         this.type = type;
         this.nbEpisode = nbEpisode;
         this.theme = theme;
