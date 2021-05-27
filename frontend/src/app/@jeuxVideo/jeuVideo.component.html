@@ -1,10 +1,70 @@
-<div *ngFor="let videoGame of _videoGameList">
-    {{videoGame.titre}}
-    {{videoGame.createur}}
-    {{videoGame.dateSortie}}
-    {{videoGame.genre}}
-    {{videoGame.langue}}
-    {{videoGame.modeDeJeu}}
-    {{videoGame.note}}
-    {{videoGame.type}}
+
+<div>
+    Liste des Jeux-videos:
 </div>
+
+<table>
+    <tr>
+        <td>
+            <div class="titre" >
+                TITRE
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Type
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Genre
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Date de sortie
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Theme
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Language
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Note
+            </div>
+        </td>
+    </tr>
+    <div *ngFor="let jeu of _videoGameList">
+        <tr>
+            <td>
+                {{jeu.titre}}
+            </td>
+            <td>
+                {{jeu.type}}
+            </td>
+            <td>
+                {{jeu.genre}}
+            </td>
+            <td>
+                {{jeu.dateSortie}}
+            </td>
+            <td>
+                {{jeu.modeDeJeu}}
+            </td>
+            <td>
+                {{jeu.langue}}
+            </td>
+            <td>
+                {{jeu.note}}
+            </td>
+
+        </tr>
+    </div>
+</table>

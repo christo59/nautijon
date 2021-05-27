@@ -1,11 +1,79 @@
-<div *ngFor="let music of _musicList">
-    {{music.titre}}
-    {{music.album}}
-    {{music.dateSortie}}
-    {{music.duree}}
-    {{music.genre}}
-    {{music.interprete}}
-    {{music.langue}}
-    {{music.note}}
-    {{music.producteur}}
+
+<div>
+    Liste des musiques:
 </div>
+
+<table>
+    <tr>
+        <td>
+            <div class="titre" >
+                TITRE
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Album
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Interpretre
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Duree
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Date de sortie
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Genre
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Language
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Note
+            </div>
+        </td>
+    </tr>
+    <div *ngFor="let musique of _musicList">
+        <tr>
+            <td>
+                {{musique.titre}}
+            </td>
+            <td>
+                {{musique.album}}
+            </td>
+            <td>
+                {{musique.interprete}}
+            </td>
+            <td>
+                {{musique.duree}}
+            </td>
+            <td>
+                {{musique.dateSortie}}
+            </td>
+            <td>
+                {{musique.genre}}
+            </td>
+            <td>
+                {{musique.langue}}
+            </td>
+            <td>
+                {{musique.note}}
+            </td>
+
+        </tr>
+    </div>
+</table>
+

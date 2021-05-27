@@ -1,11 +1,80 @@
-<div *ngFor="let film of _filmList">
-    {{film.titre}}
-    {{film.realisateur}}
-    {{film.dateSortie}}
-    {{film.genre}}
-    {{film.langue}}
-    {{film.duree}}
-    {{film.note}}
-    {{film.societeProduction}}
-    {{film.type}}
+
+<div>
+    Liste des films:
 </div>
+
+<table>
+    <tr>
+        <td>
+            <div class="titre" >
+                TITRE
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Type
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Genre
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Duree
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Date de sortie
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Theme
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Language
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Note
+            </div>
+        </td>
+    </tr>
+    <div *ngFor="let film of _filmList">
+        <tr>
+            <td>
+                {{film.titre}}
+            </td>
+            <td>
+                {{film.type}}
+            </td>
+            <td>
+                {{film.genre}}
+            </td>
+            <td>
+                {{film.duree}}
+            </td>
+            <td>
+                {{film.dateSortie}}
+            </td>
+            <td>
+                {{film.theme}}
+            </td>
+            <td>
+                {{film.langue}}
+            </td>
+            <td>
+                {{film.note}}
+            </td>
+
+        </tr>
+    </div>
+</table>
+
+

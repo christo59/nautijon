@@ -1,11 +1,79 @@
-<div *ngFor="let serie of _serieList">
-    {{serie.titre}}
-    {{serie.realisateur}}
-    {{serie.dateSortie}}
-    {{serie.genre}}
-    {{serie.langue}}
-    {{serie.nbEpisode}}
-    {{serie.note}}
-    {{serie.societeProduction}}
-    {{serie.type}}
+
+<div>
+    Liste des series:
 </div>
+
+<table>
+    <tr>
+        <td>
+            <div class="titre" >
+                TITRE
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Type
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Genre
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Nombre d'épisode
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Date de sortie
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Theme
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Language
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Note
+            </div>
+        </td>
+    </tr>
+    <div *ngFor="let serie of _serieList">
+        <tr>
+            <td>
+                {{serie.titre}}
+            </td>
+            <td>
+                {{serie.type}}
+            </td>
+            <td>
+                {{serie.genre}}
+            </td>
+            <td>
+                {{serie.nbEpisode}}
+            </td>
+            <td>
+                {{serie.dateSortie}}
+            </td>
+            <td>
+                {{serie.theme}}
+            </td>
+            <td>
+                {{serie.langue}}
+            </td>
+            <td>
+                {{serie.note}}
+            </td>
+
+        </tr>
+    </div>
+</table>
+

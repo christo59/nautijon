@@ -1,12 +1,79 @@
-<div *ngFor="let anime of _animeList">
-    {{anime.titre}}
-    {{anime.createur}}
-    {{anime.dateSortie}}
-    {{anime.langue}}
-    {{anime.genre}}
-    {{anime.nbEpisode}}
-    {{anime.note}}
-    {{anime.studioAnimation}}
-    {{anime.theme}}
-    {{anime.type}}
+
+<div>
+    Liste des animes:
 </div>
+
+<table>
+    <tr>
+        <td>
+            <div class="titre" >
+                TITRE
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Type
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Genre
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Nombre d'episode
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Date de sortie
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Theme
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Language
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Note
+            </div>
+        </td>
+    </tr>
+    <div *ngFor="let anime of _animeList">
+        <tr>
+            <td>
+                {{anime.titre}}
+            </td>
+            <td>
+                {{anime.type}}
+            </td>
+            <td>
+                {{anime.genre}}
+            </td>
+            <td>
+                {{anime.nbEpisode}}
+            </td>
+            <td>
+                {{anime.dateSortie}}
+            </td>
+            <td>
+                {{anime.theme}}
+            </td>
+            <td>
+                {{anime.langue}}
+            </td>
+            <td>
+                {{anime.note}}
+            </td>
+
+        </tr>
+    </div>
+</table>
+

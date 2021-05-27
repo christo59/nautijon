@@ -1,11 +1,78 @@
-<div *ngFor="let manga of _mangaList">
-    {{manga.titre}}
-    {{manga.dateSortie}}
-    {{manga.editeur}}
-    {{manga.genre}}
-    {{manga.langue}}
-    {{manga.nbChapitre}}
-    {{manga.note}}
-    {{manga.theme}}
-    {{manga.type}}
+<div>
+    Liste des mangas:
 </div>
+
+<table>
+    <tr>
+        <td>
+            <div class="titre" >
+                TITRE
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Type
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Genre
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Nombre de chapitre
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Date de sortie
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Theme
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Language
+            </div>
+        </td>
+        <td>
+            <div class="titre" >
+                Note
+            </div>
+        </td>
+    </tr>
+    <div *ngFor="let manga of _mangaList">
+        <tr>
+            <td>
+                {{manga.titre}}
+            </td>
+            <td>
+                {{manga.type}}
+            </td>
+            <td>
+                {{manga.genre}}
+            </td>
+            <td>
+                {{manga.nbChapitre}}
+            </td>
+            <td>
+                {{manga.dateSortie}}
+            </td>
+            <td>
+                {{manga.theme}}
+            </td>
+            <td>
+                {{manga.langue}}
+            </td>
+            <td>
+                {{manga.note}}
+            </td>
+
+        </tr>
+    </div>
+</table>
+
