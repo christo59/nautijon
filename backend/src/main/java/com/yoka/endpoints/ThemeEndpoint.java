@@ -20,7 +20,7 @@ public class ThemeEndpoint {
     public ResponseEntity<List<Musique>> listMusic(){
 //        return new ResponseEntity<>(themeComponent.getMusicList(), HttpStatus.OK);
         List<Musique> toReturn = new ArrayList<>();
-        toReturn.add(new Musique("path","titre","langue", new Date(),"genre",5.0, "interprete", "album", "duree", "producteur"));
+        toReturn.add(new Musique("path","titre","langue", "date","genre",5.0, "interprete", "album", "duree", "producteur"));
         return new ResponseEntity<>(toReturn, HttpStatus.OK);
     }
 
