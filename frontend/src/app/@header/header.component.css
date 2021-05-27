@@ -1,0 +1,21 @@
+nav.menu ul li.boutton{
+    display: inline-block;
+    list-style-type: none;
+    width: 14%;
+}
+
+nav.menu ul li.boutton a{
+    color: red;
+    background-color: black;
+    text-decoration: none;
+    text-align:center ;
+    display: flex;
+    font-size:35px;
+    justify-content: center;
+}
+
+nav.menu ul li.boutton:hover a{
+    color: black;
+    background-color: red;
+    transition: 0.5s all;
+}
