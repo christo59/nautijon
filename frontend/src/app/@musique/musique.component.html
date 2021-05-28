@@ -2,60 +2,85 @@
 <div>
     Liste des musiques:
 </div>
+<button class="boutton" (click)="ajoutMusique()">
+    ajouter une musique
+</button>
 
-<table>
+<table class="tableau">
     <tr>
-        <td class="titre" >
+        <td class="titre colonne" >
                 TITRE
         </td>
-        <td class="titre" >
+        <td class="titre colonne" >
                 Album
         </td>
-        <td class="titre" >
+        <td class="titre colonne" >
                 Interpretre
         </td>
-        <td class="titre" >
+        <td class="titre colonne" >
                 Duree
         </td>
-        <td class="titre" >
+        <td class="titre colonne" >
                 Date de sortie
         </td>
-        <td class="titre" >
+        <td class="titre colonne" >
                 Genre
         </td>
-        <td class="titre" >
+        <td class="titre colonne" >
                 Language
         </td>
-        <td class="titre" >
+        <td class="titre colonne" >
                 Note
         </td>
     </tr>
         <tr *ngFor="let musique of _musicList">
-            <td>
+            <td class="colonne ecriture">
                 {{musique.titre}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{musique.album}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{musique.interprete}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{musique.duree}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{musique.dateSortie}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{musique.genre}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{musique.langue}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{musique.note}}
             </td>
 
         </tr>
 </table>
 
+
+<popin [size]="'big'" #ajoutMusiquePopin (cancel_EE)="resetData()">
+    <div modal-header class="titre">
+        Ajout d'une musique
+    </div>
+    <div modal-body>
+        titre: <input type="text" [(ngModel)]="_newMusique.titre"/>
+        langue: <input type="text" [(ngModel)]="_newMusique.langue"/>
+        dateSortie: <input type="text" [(ngModel)]="_newMusique.dateSortie"/>
+        genre: <input type="text" [(ngModel)]="_newMusique.genre"/>
+        producteur: <input type="text" [(ngModel)]="_newMusique.producteur"/>
+        album: <input type="text" [(ngModel)]="_newMusique.album"/>
+        duree: <input type="text" [(ngModel)]="_newMusique.duree"/>
+        interpretre: <input type="text" [(ngModel)]="_newMusique.interprete"/>
+        parole: <input type="text" [(ngModel)]="_newMusique.paroles"/>
+    </div>
+    <div modal-footer>
+        <button (click)="addMusic()">
+            valider
+        </button>
+    </div>
+</popin>
