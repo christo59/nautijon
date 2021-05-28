@@ -19,8 +19,10 @@ import {SerieComponent} from "../@serie/serie.component";
 import {SerieService} from "../@serie/serie.service";
 import {FilmComponent} from "../@film/film.component";
 import {FilmService} from "../@film/film.service";
-import {PopinComponent} from "../@popin/popin.component";
 import {FormsModule} from "@angular/forms";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {CommonModule} from "@angular/common";
+import {ModalComponent} from "../@modal/modal.component";
 
 @NgModule({
   declarations: [
@@ -34,13 +36,15 @@ import {FormsModule} from "@angular/forms";
       AnimeComponent,
       SerieComponent,
       FilmComponent,
-      PopinComponent
+      ModalComponent
   ],
     imports: [
         BrowserModule,
         HttpClientModule,
         AppRoutingModule,
-        FormsModule
+        FormsModule,
+        NgbModule,
+        CommonModule
     ],
   providers: [
       MusiqueService,

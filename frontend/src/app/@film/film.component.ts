@@ -1,7 +1,7 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Film} from "./beans/Film";
 import {FilmService} from "./film.service";
-import {PopinComponent} from "../@popin/popin.component";
+import {ModalService} from "../@modal/modal.service";
 
 @Component({
     selector: 'musique',
@@ -10,23 +10,22 @@ import {PopinComponent} from "../@popin/popin.component";
 })
 export class FilmComponent {
 
-    @ViewChild('ajoutFlimPopin',{static:false}) ajoutFilmPopin:PopinComponent
-
     private _filmList: Film[] = [];
     private _newFilm:Film = new Film();
 
-    constructor(private _filmService: FilmService) {}
+    constructor(private _filmService: FilmService,
+                private _modalService: ModalService) {}
 
     ngOnInit(): void {
         this._filmService.getFilmList().subscribe(
             res => this._filmList = res
         )
     }
-    ajoutFilm():void{
-        this.ajoutFilmPopin.displayModal();
+    ajoutFilm(modal):void{
+        this._modalService.open(modal);
     }
-    resetData():void{
-        this.ajoutFilmPopin.hideModal();
+    resetData(modal):void{
+        this._modalService.close(modal);
         this._newFilm=new Film();
     }
     addFilm():void{
@@ -35,7 +34,7 @@ export class FilmComponent {
         this._filmService.addFilm(this._newFilm).subscribe(
             res => {
                 this._filmList.push(res);
-                this.resetData();
+                this.resetData("addFilmModal");
             }
         )
     }

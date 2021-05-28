@@ -72,7 +72,7 @@ public class ThemeComponent {
     }
 
     public Film addFilm(Film film){
-        return filmRepository.save(film);
+        return filmRepository.addFilm(film);
     }
 
 

@@ -1,10 +1,10 @@
 
 <div class="presentation">
     Liste des films:
+    <button class="boutton" (click)="ajoutFilm('addFilmModal')">
+        Ajouter un film
+    </button>
 </div>
-<button class="boutton" (click)="ajoutFilm()">
-    ajouter un film
-</button>
 
 <table class="tableau">
     <tr>
@@ -61,26 +61,19 @@
         </tr>
 </table>
 
-<popin [size]="'big'" #ajoutFilmPopin (cancel_EE)="resetData()">
-    <div modal-header class="titre">
-        Ajout d'un film
-    </div>
-    <div modal-body>
-        titre: <input type="text" [(ngModel)]="_newFilm.titre"/>
-        langue: <input type="text" [(ngModel)]="_newFilm.langue"/>
-        dateSortie: <input type="text" [(ngModel)]="_newFilm.dateSortie"/>
-        genre: <input type="text" [(ngModel)]="_newFilm.genre"/>
-        realisateur: <input type="text" [(ngModel)]="_newFilm.realisateur"/>
-        type: <input type="text" [(ngModel)]="_newFilm.type"/>
-        duree: <input type="text" [(ngModel)]="_newFilm.duree"/>
-        theme: <input type="text" [(ngModel)]="_newFilm.theme"/>
-        societeProduction: <input type="text" [(ngModel)]="_newFilm.societeProduction"/>
-        resume: <input type="text" [(ngModel)]="_newFilm.resume"/>
-    </div>
-    <div modal-footer>
-        <button (click)="addFilm()">
-            valider
-        </button>
-    </div>
-</popin>
+<jw-modal id="addFilmModal">
+    <h1>Ajout d'un film</h1>
+            titre: <input type="text" [(ngModel)]="_newFilm.titre"/>
+            langue: <input type="text" [(ngModel)]="_newFilm.langue"/>
+            dateSortie: <input type="text" [(ngModel)]="_newFilm.dateSortie"/>
+            genre: <input type="text" [(ngModel)]="_newFilm.genre"/>
+            realisateur: <input type="text" [(ngModel)]="_newFilm.realisateur"/>
+            type: <input type="text" [(ngModel)]="_newFilm.type"/>
+            duree: <input type="text" [(ngModel)]="_newFilm.duree"/>
+            theme: <input type="text" [(ngModel)]="_newFilm.theme"/>
+            societeProduction: <input type="text" [(ngModel)]="_newFilm.societeProduction"/>
+            resume: <input type="text" [(ngModel)]="_newFilm.resume"/>
+    <button (click)="addFilm()">Valider</button>
+    <button (click)="resetData('addFilmModal');">Annuler</button>
+</jw-modal>
 
