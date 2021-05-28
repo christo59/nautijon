@@ -1,5 +1,44 @@
-titre{
+.titre{
     size: 120%;
     color: red;
     text-align: center;
+}
+.colonne{
+    width: 12.5%;
+}
+.ecriture{
+    font-size: 120%;
+    text-align: center;
+}
+.tableau{
+    padding: 5px;
+    border: 1px solid black;
+    border-collapse: collapse;
+    width:100%;
+}
+.presentation{
+    font-size: 200%;
+    color: darkgreen;
+    text-align: center;
+}
+.ajout .boutton{
+    display: inline-block;
+    list-style-type: none;
+    width: 14%;
+}
+
+.ajout .boutton a{
+    color: blue;
+    background-color: brown;
+    text-decoration: none;
+    text-align:right;
+    display: flex;
+    font-size:35px;
+    justify-content: center;
+}
+
+.ajout boutton:hover a{
+    color: brown;
+    background-color: blue;
+    transition: 0.5s all;
 }

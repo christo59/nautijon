@@ -2,60 +2,86 @@
 <div>
     Liste des series:
 </div>
+<button class="boutton" (click)="ajoutSerie()">
+    ajouter une serie
+</button>
 
-<table>
+<table class="tableau">
     <tr>
-        <td class="titre" >
+        <td class="titre colonne" >
                 TITRE
         </td>
-        <td class="titre" >
+        <td class="titre colonne"  >
                 Type
         </td>
-        <td class="titre" >
+        <td class="titre colonne" >
                 Genre
         </td>
-        <td class="titre" >
+        <td class="titre colonne" >
                 Nombre d'épisode
         </td>
-        <td class="titre" >
+        <td class="titre colonne" >
                 Date de sortie
         </td>
-        <td class="titre" >
+        <td class="titre colonne" >
                 Theme
         </td>
-        <td class="titre" >
+        <td class="titre colonne" >
                 Language
         </td>
-        <td class="titre" >
+        <td class="titre colonne" >
                 Note
         </td>
     </tr>
         <tr *ngFor="let serie of _serieList">
-            <td>
+            <td class="colonne ecriture">
                 {{serie.titre}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{serie.type}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{serie.genre}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{serie.nbEpisode}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{serie.dateSortie}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{serie.theme}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{serie.langue}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{serie.note}}
             </td>
 
         </tr>
 </table>
+
+<popin [size]="'big'" #ajoutSeriePopin (cancel_EE)="resetData()">
+    <div modal-header class="titre">
+        Ajout d'une serie
+    </div>
+    <div modal-body>
+        titre: <input type="text" [(ngModel)]="_newSerie.titre"/>
+        langue: <input type="text" [(ngModel)]="_newSerie.langue"/>
+        dateSortie: <input type="text" [(ngModel)]="_newSerie.dateSortie"/>
+        genre: <input type="text" [(ngModel)]="_newSerie.genre"/>
+        realisateur: <input type="text" [(ngModel)]="_newSerie.realisateur"/>
+        type: <input type="text" [(ngModel)]="_newSerie.type"/>
+        nombre d'episode : <input type="text" [(ngModel)]="_newSerie.nbEpisode"/>
+        theme: <input type="text" [(ngModel)]="_newSerie.theme"/>
+        societeProduction: <input type="text" [(ngModel)]="_newSerie.societeProduction"/>
+        resume: <input type="text" [(ngModel)]="_newSerie.resume"/>
+    </div>
+    <div modal-footer>
+        <button (click)="addSerie()">
+            valider
+        </button>
+    </div>
+</popin>
 

@@ -1,60 +1,80 @@
 <div>
     Liste des mangas:
+    <button class="boutton" (click)="ajoutMangaModal('addMangaModal')">
+        Ajouter un manga
+    </button>
 </div>
 
-<table>
+
+<table class="tableau">
     <tr>
-        <td  class="titre" >
+        <td class="titre colonne" >
                 TITRE
         </td>
-        <td  class="titre" >
+        <td class="titre colonne" >
                 Type
         </td>
-        <td class="titre" >
+        <td class="titre colonne" >
                 Genre
         </td>
-        <td class="titre" >
+        <td class="titre colonne" >
                 Nombre de chapitre
         </td>
-        <td class="titre" >
+        <td class="titre colonne" >
                 Date de sortie
         </td>
-        <td class="titre" >
+        <td class="titre colonne" >
                 Theme
         </td>
-        <td class="titre" >
+        <td class="titre colonne" >
                 Language
         </td>
-        <td class="titre" >
+        <td class="titre colonne" >
                 Note
         </td>
     </tr>
         <tr *ngFor="let manga of _mangaList">
-            <td>
+            <td class="colonne ecriture">
                 {{manga.titre}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{manga.type}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{manga.genre}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{manga.nbChapitre}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{manga.dateSortie}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{manga.theme}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{manga.langue}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{manga.note}}
             </td>
 
         </tr>
 </table>
+
+
+<jw-modal id="addMangaModal">
+    <h1>Ajout d'un film</h1>
+    titre: <input type="text" [(ngModel)]="_newManga.titre"/><br>
+    langue: <input type="text" [(ngModel)]="_newManga.langue"/><br>
+    dateSortie: <input type="text" [(ngModel)]="_newManga.dateSortie"/><br>
+    genre: <input type="text" [(ngModel)]="_newManga.genre"/><br>
+    editeur: <input type="text" [(ngModel)]="_newManga.editeur"/><br>
+    type: <input type="text" [(ngModel)]="_newManga.type"/><br>
+    date de sortie: <input type="text" [(ngModel)]="_newManga.dateSortie"/><br>
+    theme: <input type="text" [(ngModel)]="_newManga.theme"/><br>
+    resume: <input type="text" [(ngModel)]="_newManga.resume"/><br>
+    <button (click)="addManga()">Valider</button>
+    <button (click)="resetData('addMangaModal');">Annuler</button>
+</jw-modal>
 
