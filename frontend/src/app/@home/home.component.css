@@ -1,5 +1,23 @@
-titre{
-  size: 120%;
-    color: red;
-    text-align: center;
+.titre{
+  font-size: 150%;
+  color: red;
+  text-align: center;
+}
+.colonne{
+  width: 50%;
+}
+.ecriture{
+  font-size: 120%;
+  text-align: center;
+}
+.tableau{
+  padding: 5px;
+  border: 1px solid black;
+  border-collapse: collapse;
+  width:100%;
+}
+.presentation{
+  font-size: 200%;
+  color: darkgreen;
+  text-align: center;
 }

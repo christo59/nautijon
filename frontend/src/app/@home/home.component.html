@@ -1,63 +1,63 @@
-<h1>Home page</h1>
-<div>
+
+<div class="presentation">
     TOP 10 des loisir :
 </div>
-<table>
+<table class="tableau" >
     <tr>
-        <td>
+        <td class="colonne">
             <div class="titre" >
                 TOP Musique
             </div>
-            <div *ngFor="let musique of _musicList.slice(0,10)" >
+            <div class="ecriture" *ngFor="let musique of _musicList.slice(0,10)" >
                 {{musique.titre}}
                 {{musique.note}}
             </div>
         </td>
-        <td>
+        <td class="colonne">
             <div class="titre" >
                 TOP Jeux videos
             </div>
-            <div *ngFor="let jeu of _videoGameList.slice(0,10)" >
+            <div class="ecriture"  *ngFor="let jeu of _videoGameList.slice(0,10)" >
                 {{jeu.titre}}
                 {{jeu.note}}
             </div>
         </td>
     </tr>
     <tr>
-        <td>
+        <td class="colonne">
             <div class="titre" >
                 TOP Manga
             </div>
-            <div *ngFor="let manga of _mangaList.slice(0,10)" >
+            <div class="ecriture"  *ngFor="let manga of _mangaList.slice(0,10)" >
                 {{manga.titre}}
                 {{manga.note}}
             </div>
         </td>
-        <td>
+        <td class="colonne">
             <div class="titre" >
                 TOP Anime
             </div>
-            <div *ngFor="let anime of _animeList.slice(0,10)" >
+            <div class="ecriture"  *ngFor="let anime of _animeList.slice(0,10)" >
                 {{anime.titre}}
                 {{anime.note}}
             </div>
         </td>
     </tr>
     <tr>
-        <td>
+        <td class="colonne">
             <div class="titre" >
                 TOP serie
             </div>
-            <div *ngFor="let serie of _serieList.slice(0,10)" >
+            <div class="ecriture"  *ngFor="let serie of _serieList.slice(0,10)" >
                 {{serie.titre}}
                 {{serie.note}}
             </div>
         </td>
-        <td>
+        <td class="colonne">
             <div class="titre" >
                 TOP Film
             </div>
-            <div *ngFor="let film of _filmList.slice(0,10)" >
+            <div class="ecriture"  *ngFor="let film of _filmList.slice(0,10)" >
                 {{film.titre}}
                 {{film.note}}
             </div>

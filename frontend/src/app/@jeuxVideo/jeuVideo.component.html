@@ -5,44 +5,30 @@
 
 <table>
     <tr>
-        <td>
-            <div class="titre" >
+        <td class="titre" >
                 TITRE
-            </div>
         </td>
-        <td>
-            <div class="titre" >
+        <td class="titre" >
                 Type
-            </div>
         </td>
-        <td>
-            <div class="titre" >
+        <td class="titre" >
                 Genre
-            </div>
         </td>
-        <td>
-            <div class="titre" >
+        <td class="titre" >
                 Date de sortie
-            </div>
         </td>
-        <td>
-            <div class="titre" >
+        <td class="titre" >
                 Theme
-            </div>
         </td>
-        <td>
-            <div class="titre" >
+        <td class="titre" >
                 Language
-            </div>
         </td>
-        <td>
-            <div class="titre" >
+        <td class="titre" >
                 Note
-            </div>
         </td>
     </tr>
-    <div *ngFor="let jeu of _videoGameList">
-        <tr>
+
+        <tr *ngFor="let jeu of _videoGameList">
             <td>
                 {{jeu.titre}}
             </td>
@@ -66,5 +52,4 @@
             </td>
 
         </tr>
-    </div>
 </table>

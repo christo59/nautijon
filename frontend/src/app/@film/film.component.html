@@ -1,80 +1,86 @@
 
-<div>
+<div class="presentation">
     Liste des films:
 </div>
+<button class="boutton" (click)="ajoutFilm()">
+    ajouter un film
+</button>
 
-<table>
+<table class="tableau">
     <tr>
-        <td>
-            <div class="titre" >
+        <td class="titre colonne" >
                 TITRE
-            </div>
         </td>
-        <td>
-            <div class="titre" >
+        <td class="titre colonne" >
                 Type
-            </div>
-        </td>
-        <td>
-            <div class="titre" >
+        </td >
+        <td class="titre colonne" >
                 Genre
-            </div>
         </td>
-        <td>
-            <div class="titre" >
+        <td class="titre colonne" >
                 Duree
-            </div>
         </td>
-        <td>
-            <div class="titre" >
+        <td class="titre colonne" >
                 Date de sortie
-            </div>
         </td>
-        <td>
-            <div class="titre" >
+        <td class="titre colonne" >
                 Theme
-            </div>
         </td>
-        <td>
-            <div class="titre" >
+        <td class="titre colonne" >
                 Language
-            </div>
         </td>
-        <td>
-            <div class="titre" >
+        <td class="titre colonne" >
                 Note
-            </div>
         </td>
-    </tr>
-    <div *ngFor="let film of _filmList">
-        <tr>
-            <td>
+        <tr *ngFor="let film of _filmList">
+            <td class="colonne ecriture">
                 {{film.titre}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{film.type}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{film.genre}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{film.duree}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{film.dateSortie}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{film.theme}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{film.langue}}
             </td>
-            <td>
+            <td class="colonne ecriture">
                 {{film.note}}
             </td>
 
         </tr>
-    </div>
 </table>
 
+<popin [size]="'big'" #ajoutFilmPopin (cancel_EE)="resetData()">
+    <div modal-header class="titre">
+        Ajout d'un film
+    </div>
+    <div modal-body>
+        titre: <input type="text" [(ngModel)]="_newFilm.titre"/>
+        langue: <input type="text" [(ngModel)]="_newFilm.langue"/>
+        dateSortie: <input type="text" [(ngModel)]="_newFilm.dateSortie"/>
+        genre: <input type="text" [(ngModel)]="_newFilm.genre"/>
+        realisateur: <input type="text" [(ngModel)]="_newFilm.realisateur"/>
+        type: <input type="text" [(ngModel)]="_newFilm.type"/>
+        duree: <input type="text" [(ngModel)]="_newFilm.duree"/>
+        theme: <input type="text" [(ngModel)]="_newFilm.theme"/>
+        societeProduction: <input type="text" [(ngModel)]="_newFilm.societeProduction"/>
+        resume: <input type="text" [(ngModel)]="_newFilm.resume"/>
+    </div>
+    <div modal-footer>
+        <button (click)="addFilm()">
+            valider
+        </button>
+    </div>
+</popin>
 

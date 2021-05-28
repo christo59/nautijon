@@ -1,4 +1,5 @@
 import {Component, Input, Output, EventEmitter, ElementRef, ViewChild, HostListener} from "@angular/core";
+import * as $ from "jquery";
 
 @Component({
     selector: 'popin',

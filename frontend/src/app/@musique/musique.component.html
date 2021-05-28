@@ -5,49 +5,32 @@
 
 <table>
     <tr>
-        <td>
-            <div class="titre" >
+        <td class="titre" >
                 TITRE
-            </div>
         </td>
-        <td>
-            <div class="titre" >
+        <td class="titre" >
                 Album
-            </div>
         </td>
-        <td>
-            <div class="titre" >
+        <td class="titre" >
                 Interpretre
-            </div>
         </td>
-        <td>
-            <div class="titre" >
+        <td class="titre" >
                 Duree
-            </div>
         </td>
-        <td>
-            <div class="titre" >
+        <td class="titre" >
                 Date de sortie
-            </div>
         </td>
-        <td>
-            <div class="titre" >
+        <td class="titre" >
                 Genre
-            </div>
         </td>
-        <td>
-            <div class="titre" >
+        <td class="titre" >
                 Language
-            </div>
         </td>
-        <td>
-            <div class="titre" >
+        <td class="titre" >
                 Note
-            </div>
         </td>
     </tr>
-    <div *ngFor="let musique of _musicList">
-        <tr>
+        <tr *ngFor="let musique of _musicList">
             <td>
                 {{musique.titre}}
             </td>
@@ -74,6 +57,5 @@
             </td>
 
         </tr>
-    </div>
 </table>
 

@@ -20,6 +20,7 @@ import {SerieService} from "../@serie/serie.service";
 import {FilmComponent} from "../@film/film.component";
 import {FilmService} from "../@film/film.service";
 import {PopinComponent} from "../@popin/popin.component";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -35,11 +36,12 @@ import {PopinComponent} from "../@popin/popin.component";
       FilmComponent,
       PopinComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        FormsModule
+    ],
   providers: [
       MusiqueService,
       JeuVideoService,
