@@ -21,13 +21,16 @@ export class FilmComponent {
             res => this._filmList = res
         )
     }
-    ajoutFilm(modal):void{
+
+    ajoutFilmModal(modal):void{
         this._modalService.open(modal);
     }
+
     resetData(modal):void{
         this._modalService.close(modal);
         this._newFilm=new Film();
     }
+
     addFilm():void{
         this._newFilm.note=0.0;
         this._newFilm.imagePath="";

@@ -1,6 +1,9 @@
 
 <div>
     Liste des animes:
+    <button class="boutton" (click)="ajoutAnimeModal('addAnimeModal')">
+        Ajouter un anime
+    </button>
 </div>
 
 <table>
@@ -58,3 +61,18 @@
         </tr>
 </table>
 
+<jw-modal id="addFilmModal">
+    <h1>Ajout d'un film</h1>
+    titre: <input type="text" [(ngModel)]="_newAnime.titre"/><br>
+    langue: <input type="text" [(ngModel)]="_newAnime.langue"/><br>
+    dateSortie: <input type="text" [(ngModel)]="_newAnime.dateSortie"/><br>
+    genre: <input type="text" [(ngModel)]="_newAnime.genre"/><br>
+    realisateur: <input type="text" [(ngModel)]="_newAnime.createur"/><br>
+    type: <input type="text" [(ngModel)]="_newAnime.type"/><br>
+    duree: <input type="text" [(ngModel)]="_newAnime.nbEpisode"/><br>
+    theme: <input type="text" [(ngModel)]="_newAnime.theme"/><br>
+    societeProduction: <input type="text" [(ngModel)]="_newAnime.studioAnimation"/><br>
+    resume: <input type="text" [(ngModel)]="_newAnime.resume"/><br>
+    <button (click)="addAnime()">Valider</button>
+    <button (click)="resetData('addFilmModal');">Annuler</button>
+</jw-modal>

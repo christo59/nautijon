@@ -1,7 +1,7 @@
 
 <div class="presentation">
     Liste des films:
-    <button class="boutton" (click)="ajoutFilm('addFilmModal')">
+    <button class="boutton" (click)="ajoutFilmModal('addFilmModal')">
         Ajouter un film
     </button>
 </div>
@@ -63,16 +63,16 @@
 
 <jw-modal id="addFilmModal">
     <h1>Ajout d'un film</h1>
-            titre: <input type="text" [(ngModel)]="_newFilm.titre"/>
-            langue: <input type="text" [(ngModel)]="_newFilm.langue"/>
-            dateSortie: <input type="text" [(ngModel)]="_newFilm.dateSortie"/>
-            genre: <input type="text" [(ngModel)]="_newFilm.genre"/>
-            realisateur: <input type="text" [(ngModel)]="_newFilm.realisateur"/>
-            type: <input type="text" [(ngModel)]="_newFilm.type"/>
-            duree: <input type="text" [(ngModel)]="_newFilm.duree"/>
-            theme: <input type="text" [(ngModel)]="_newFilm.theme"/>
-            societeProduction: <input type="text" [(ngModel)]="_newFilm.societeProduction"/>
-            resume: <input type="text" [(ngModel)]="_newFilm.resume"/>
+            titre: <input type="text" [(ngModel)]="_newFilm.titre"/><br>
+            langue: <input type="text" [(ngModel)]="_newFilm.langue"/><br>
+            dateSortie: <input type="text" [(ngModel)]="_newFilm.dateSortie"/><br>
+            genre: <input type="text" [(ngModel)]="_newFilm.genre"/><br>
+            realisateur: <input type="text" [(ngModel)]="_newFilm.realisateur"/><br>
+            type: <input type="text" [(ngModel)]="_newFilm.type"/><br>
+            duree: <input type="text" [(ngModel)]="_newFilm.duree"/><br>
+            theme: <input type="text" [(ngModel)]="_newFilm.theme"/><br>
+            societeProduction: <input type="text" [(ngModel)]="_newFilm.societeProduction"/><br>
+            resume: <input type="text" [(ngModel)]="_newFilm.resume"/><br>
     <button (click)="addFilm()">Valider</button>
     <button (click)="resetData('addFilmModal');">Annuler</button>
 </jw-modal>
