@@ -6,13 +6,15 @@ public class Manga extends Theme {
     private String theme;
     private String editeur;
     private String type;
+    private String resume;
 
-    public Manga(String imagePath, String titre, String langue, String dateSortie, String genre, Double note, String nbChapitre, String theme, String editeur, String type) {
+    public Manga(String imagePath, String titre, String langue, String dateSortie, String genre, Double note, String nbChapitre, String theme, String editeur, String type, String resume) {
         super(imagePath, titre, langue, dateSortie, genre, note);
         this.nbChapitre = nbChapitre;
         this.theme = theme;
         this.editeur = editeur;
         this.type = type;
+        this.resume = resume;
     }
 
     public String getNbChapitre() {
@@ -45,5 +47,13 @@ public class Manga extends Theme {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getResume() {
+        return resume;
+    }
+
+    public void setResume(String resume) {
+        this.resume = resume;
     }
 }

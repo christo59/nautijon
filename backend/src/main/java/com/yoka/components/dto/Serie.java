@@ -7,14 +7,16 @@ public class Serie extends Theme {
     private String nbEpisode;
     private String theme;
     private String societeProduction;
+    private String resume;
 
-    public Serie(String imagePath, String titre, String langue, String dateSortie, String genre, Double note, String realisateur, String type, String nbEpisode, String theme, String societeProduction) {
+    public Serie(String imagePath, String titre, String langue, String dateSortie, String genre, Double note, String realisateur, String type, String nbEpisode, String theme, String societeProduction, String resume) {
         super(imagePath, titre, langue, dateSortie, genre, note);
         this.realisateur = realisateur;
         this.type = type;
         this.nbEpisode = nbEpisode;
         this.theme = theme;
         this.societeProduction = societeProduction;
+        this.resume = resume;
     }
 
     public String getRealisateur() {
@@ -55,5 +57,13 @@ public class Serie extends Theme {
 
     public void setSocieteProduction(String societeProduction) {
         this.societeProduction = societeProduction;
+    }
+
+    public String getResume() {
+        return resume;
+    }
+
+    public void setResume(String resume) {
+        this.resume = resume;
     }
 }

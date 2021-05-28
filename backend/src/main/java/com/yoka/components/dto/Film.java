@@ -7,14 +7,16 @@ public class Film extends Theme {
     private String duree;
     private String theme;
     private String societeProduction;
+    private String resume;
 
-    public Film(String imagePath, String titre, String langue, String dateSortie, String genre, Double note, String realisateur, String type, String duree, String theme, String societeProduction) {
+    public Film(String imagePath, String titre, String langue, String dateSortie, String genre, Double note, String realisateur, String type, String duree, String theme, String societeProduction, String resume) {
         super(imagePath, titre, langue, dateSortie, genre, note);
         this.realisateur = realisateur;
         this.type = type;
         this.duree = duree;
         this.theme = theme;
         this.societeProduction = societeProduction;
+        this.resume = resume;
     }
 
     public String getRealisateur() {
@@ -55,5 +57,13 @@ public class Film extends Theme {
 
     public void setSocieteProduction(String societeProduction) {
         this.societeProduction = societeProduction;
+    }
+
+    public String getResume() {
+        return resume;
+    }
+
+    public void setResume(String resume) {
+        this.resume = resume;
     }
 }
