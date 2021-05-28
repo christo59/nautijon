@@ -19,6 +19,7 @@ import {SerieComponent} from "../@serie/serie.component";
 import {SerieService} from "../@serie/serie.service";
 import {FilmComponent} from "../@film/film.component";
 import {FilmService} from "../@film/film.service";
+import {PopinComponent} from "../@popin/popin.component";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {FilmService} from "../@film/film.service";
       MangaComponent,
       AnimeComponent,
       SerieComponent,
-      FilmComponent
+      FilmComponent,
+      PopinComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,21 @@
+<div class="modal fade" [ngClass]="[zindex===true ? 'z-index' : '']" #modal data-backdrop="static" data-keyboard="false"
+     role="dialog">
+    <div class="modal-dialog"
+         [ngClass]="[size==='big' ? 'modal-fullwidth' : '',  size==='medium' ? 'modal-lg' : '', size==='small' ? '' : '', size==='full' ? 'modal-dialog-full':'', sub_header===true ? 'modal-sub-header' : '']">
+        <div class="modal-content">
+            <div class="modal-header" [ngClass]="[bottom==='nobottom' ? 'no-bottom' : '']">
+                <button type="button" class="close" (click)="closePopin()"><i class="fa fa-times"></i></button>
+                <ng-content select="[modal-header]"></ng-content>
+            </div>
+            <div class="modal-body">
+                <ng-content select="[modal-body]"></ng-content>
+            </div>
+            <div class="modal-footer">
+                <ng-content select="[modal-footer]"></ng-content>
+                <button type="button" class="btn btn-default  btn-annul" (click)="cancelPopin()"><i class=""></i>
+                    Annuler
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
