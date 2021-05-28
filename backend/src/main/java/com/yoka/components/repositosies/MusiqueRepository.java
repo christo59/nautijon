@@ -9,6 +9,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MusiqueRepository extends PagingAndSortingRepository<Musique,Long> {
 
+    @Query("CREATE (n:Musique {imagePath:{musique}.imagePath, titre:{musique}.titre, langue:{musique}.langue, dateSortie:{musique}.dateSortie, genre:{musique}.genre, note:{musique}.note, interprete:{musique}.interprete, album:{musique}.album, duree:{musique}.duree, producteur:{musique}.producteur, paroles:{musique}.paroles}) RETURN n")
+    Musique addMusique(@Param("musique") Musique musique);
+
     @Query("MATCH (n:Musique {titre:{musique}.titre})\n" +
             "OPTIONAL MATCH (n)<-[:HAS_SCORE]-(s:Score)\n" +
             "RETURN CASE WHEN avg(s.score) IS NOT NULL THEN avg(s.score) ELSE 0.0 END")

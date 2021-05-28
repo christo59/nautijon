@@ -33,14 +33,14 @@ public class ThemeComponent {
         return (List<Musique>) musiqueRepository.findAll();
     }
     public Musique addMusic(Musique musique){
-        return musiqueRepository.save(musique);
+        return musiqueRepository.addMusique(musique);
     }
 
     public List<JeuVideo> getVideoGameList(){
         return (List<JeuVideo>) jeuVideoRepository.findAll();
     }
     public JeuVideo addVideoGame(JeuVideo jeuVideo){
-        return jeuVideoRepository.save(jeuVideo);
+        return jeuVideoRepository.addVideoGame(jeuVideo);
     }
 
     public List<Manga> getMangaList(){
@@ -48,7 +48,7 @@ public class ThemeComponent {
     }
 
     public Manga addManga(Manga manga){
-        return mangaRepository.save(manga);
+        return mangaRepository.addManga(manga);
     }
 
     public List<Anime> getAnimeList(){
@@ -56,7 +56,7 @@ public class ThemeComponent {
     }
 
     public Anime addAnime(Anime anime){
-        return animeRepository.save(anime);
+        return animeRepository.addAnime(anime);
     }
 
     public List<Serie> getSerieList(){
@@ -64,7 +64,7 @@ public class ThemeComponent {
     }
 
     public Serie addSerie(Serie serie){
-        return serieRepository.save(serie);
+        return serieRepository.addSerie(serie);
     }
 
     public List<Film> getFilmList(){
