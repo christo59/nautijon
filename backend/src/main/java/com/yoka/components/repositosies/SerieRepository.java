@@ -9,12 +9,19 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SerieRepository extends PagingAndSortingRepository<Serie,Long> {
 
-    @Query("CREATE (n:Serie {imagePath:{serie}.imagePath, titre:{serie}.titre, langue:{serie}.langue, dateSortie:{serie}.dateSortie, genre:{serie}.genre, note:{serie}.note, realisateur:{serie}.realisateur, type:{serie}.type, nbEpisode:{serie}.nbEpisode, theme:{serie}.theme, societeProduction:{serie}.societeProduction, resume:{serie}.resume}) RETURN n")
+    @Query("CREATE (s:Serie {imagePath:{serie}.imagePath, titre:{serie}.titre, langue:{serie}.langue, dateSortie:{serie}.dateSortie, genre:{serie}.genre, note:{serie}.note, realisateur:{serie}.realisateur, type:{serie}.type, nbEpisode:{serie}.nbEpisode, theme:{serie}.theme, societeProduction:{serie}.societeProduction, resume:{serie}.resume}) RETURN s")
     Serie addSerie(@Param("serie") Serie serie);
 
-    @Query("MATCH (n:Serie {titre:{serie}.titre})\n" +
-            "OPTIONAL MATCH (n)<-[:HAS_SCORE]-(s:Score)\n" +
+    @Query("MATCH (se:Serie {titre:{serie}.titre}) " +
+            "CREATE (se)<-[:HAS_SCORE]-(:Score {score:{score}}) " +
+            "OPTIONAL MATCH (se)<-[:HAS_SCORE]-(s:Score) " +
+            "SET se.note = avg(s) " +
+            "RETURN avg(s)")
+    Double addScore(@Param("score") Double score, @Param("serie") Serie serie);
+
+    @Query("MATCH (s:Serie {titre:{serie}.titre})\n" +
+            "OPTIONAL MATCH (s)<-[:HAS_SCORE]-(s:Score)\n" +
             "RETURN CASE WHEN avg(s.score) IS NOT NULL THEN avg(s.score) ELSE 0.0 END")
-    Double getScore(@Param("serie") Serie serie);
+    Double getAverageScore(@Param("serie") Serie serie);
 
 }

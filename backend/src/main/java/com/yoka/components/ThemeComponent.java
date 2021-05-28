@@ -39,6 +39,7 @@ public class ThemeComponent {
     public List<JeuVideo> getVideoGameList(){
         return (List<JeuVideo>) jeuVideoRepository.findAll();
     }
+
     public JeuVideo addVideoGame(JeuVideo jeuVideo){
         return jeuVideoRepository.addVideoGame(jeuVideo);
     }
@@ -75,5 +76,26 @@ public class ThemeComponent {
         return filmRepository.addFilm(film);
     }
 
+    public Double addScore(Double score, Theme theme){
+        if (theme.getClass().equals(Anime.class)){
+            return animeRepository.addScore(score, (Anime) theme);
+        }
+        if (theme.getClass().equals(Film.class)){
+            return filmRepository.addScore(score, (Film) theme);
+        }
+        if (theme.getClass().equals(JeuVideo.class)){
+            return jeuVideoRepository.addScore(score, (JeuVideo) theme);
+        }
+        if (theme.getClass().equals(Manga.class)){
+            return mangaRepository.addScore(score, (Manga) theme);
+        }
+        if (theme.getClass().equals(Musique.class)){
+            return musiqueRepository.addScore(score, (Musique) theme);
+        }
+        if (theme.getClass().equals(Serie.class)){
+            return serieRepository.addScore(score, (Serie) theme);
+        }
+        return 0.0;
+    }
 
 }

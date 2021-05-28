@@ -9,12 +9,19 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MangaRepository extends PagingAndSortingRepository<Manga,Long> {
 
-    @Query("CREATE (n:Manga {imagePath:{manga}.imagePath, titre:{manga}.titre, langue:{manga}.langue, dateSortie:{manga}.dateSortie, genre:{manga}.genre, note:{manga}.note, nbChapitre:{manga}.nbChapitre, theme:{manga}.theme, editeur:{manga}.editeur, type:{manga}.type, resume:{manga}.resume}) RETURN n")
+    @Query("CREATE (m:Manga {imagePath:{manga}.imagePath, titre:{manga}.titre, langue:{manga}.langue, dateSortie:{manga}.dateSortie, genre:{manga}.genre, note:{manga}.note, nbChapitre:{manga}.nbChapitre, theme:{manga}.theme, editeur:{manga}.editeur, type:{manga}.type, resume:{manga}.resume}) RETURN m")
     Manga addManga(@Param("manga") Manga manga);
 
-    @Query("MATCH (n:Manga {titre:{manga}.titre})\n" +
-            "OPTIONAL MATCH (n)<-[:HAS_SCORE]-(s:Score)\n" +
+    @Query("MATCH (m:Manga {titre:{manga}.titre}) " +
+            "CREATE (m)<-[:HAS_SCORE]-(:Score {score:{score}}) " +
+            "OPTIONAL MATCH (m)<-[:HAS_SCORE]-(s:Score) " +
+            "SET m.note = avg(s) " +
+            "RETURN avg(s)")
+    Double addScore(@Param("score") Double score, @Param("manga") Manga manga);
+
+    @Query("MATCH (m:Manga {titre:{manga}.titre})\n" +
+            "OPTIONAL MATCH (m)<-[:HAS_SCORE]-(s:Score)\n" +
             "RETURN CASE WHEN avg(s.score) IS NOT NULL THEN avg(s.score) ELSE 0.0 END")
-    Double getScore(@Param("manga") Manga manga);
+    Double getAverageScore(@Param("manga") Manga manga);
 
 }
