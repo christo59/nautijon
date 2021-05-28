@@ -1,67 +1,67 @@
 
-<div>
+<div class="presentation">
     Liste des animes:
     <button class="boutton" (click)="ajoutAnimeModal('addAnimeModal')">
         Ajouter un anime
     </button>
 </div>
 
-<table>
+<table class="tableau">
     <tr>
-        <td class="titre" >
+        <td class="titre colonne" >
                 TITRE
         </td>
-        <td class="titre" >
+        <td class="titre colonne" >
                 Type
         </td>
-        <td class="titre" >
+        <td class="titre colonne" >
                 Genre
         </td>
-        <td class="titre" >
+        <td class="titre colonne" >
                 Nombre d'episode
         </td>
-        <td>
+        <td class="titre colonne">
                 Date de sortie
         </td>
-        <td class="titre" >
+        <td class="titre colonne" >
                 Theme
         </td>
-        <td class="titre" >
+        <td class="titre colonne" >
                 Language
         </td>
-        <td class="titre" >
+        <td class="titre colonne" >
                 Note
         </td>
     </tr>
         <tr *ngFor="let anime of _animeList">
-            <td class="titre">
+            <td class="titre ecriture">
                 {{anime.titre}}
             </td>
-            <td class="titre">
+            <td class="titre ecriture">
                 {{anime.type}}
             </td>
-            <td class="titre">
+            <td class="titre ecriture">
                 {{anime.genre}}
             </td>
-            <td class="titre">
+            <td class="titre ecriture">
                 {{anime.nbEpisode}}
             </td>
-            <td class="titre">
+            <td class="titre ecriture">
                 {{anime.dateSortie}}
             </td>
-            <td class="titre">
+            <td class="titre ecriture">
                 {{anime.theme}}
             </td>
-            <td class="titre">
+            <td class="titre ecriture">
                 {{anime.langue}}
             </td>
-            <td class="titre">
+            <td class="titre ecriture">
                 {{anime.note}}
             </td>
         </tr>
 </table>
 
-<jw-modal id="addFilmModal">
+<jw-modal id="addAnimeModal">
     <h1>Ajout d'un film</h1>
     titre: <input type="text" [(ngModel)]="_newAnime.titre"/><br>
     langue: <input type="text" [(ngModel)]="_newAnime.langue"/><br>
@@ -74,5 +74,5 @@
     societeProduction: <input type="text" [(ngModel)]="_newAnime.studioAnimation"/><br>
     resume: <input type="text" [(ngModel)]="_newAnime.resume"/><br>
     <button (click)="addAnime()">Valider</button>
-    <button (click)="resetData('addFilmModal');">Annuler</button>
+    <button (click)="resetData('addAnimeModal');">Annuler</button>
 </jw-modal>

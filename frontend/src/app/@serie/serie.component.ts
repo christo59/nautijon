@@ -1,8 +1,7 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
+import {Component,OnInit} from "@angular/core";
 import {Serie} from "./beans/Serie";
 import {SerieService} from "./serie.service";
-import {PopinComponent} from "../@popin/popin.component";
-import {Film} from "../@film/beans/Film";
+import {ModalService} from "../@modal/modal.service";
 
 @Component({
     selector: 'musique',
@@ -11,32 +10,34 @@ import {Film} from "../@film/beans/Film";
 })
 export class SerieComponent {
 
-    @ViewChild('ajoutSeriePopin',{static:false}) ajoutSeriePopin:PopinComponent
-
-    private _serieList: Serie[];
+    private _serieList: Serie[] = [];
     private _newSerie:Serie = new Serie();
 
-    constructor(private _serieService: SerieService) {}
+    constructor(private _serieService: SerieService,
+                private _modalService: ModalService) {}
 
     ngOnInit(): void {
         this._serieService.getSerieList().subscribe(
             res => this._serieList = res
         )
     }
-    ajoutSerie():void{
-        this.ajoutSeriePopin.displayModal();
+
+    ajoutSerieModal(modal):void {
+        this._modalService.open(modal);
     }
-    resetData():void{
-        this.ajoutSeriePopin.hideModal();
-        this._newSerie=new Serie();
+
+    resetData(modal):void {
+        this._modalService.close(modal);
+        this._newSerie = new Serie();
     }
-    addSerie():void{
+
+    addSerie():void {
         this._newSerie.note=0.0;
         this._newSerie.imagePath="";
         this._serieService.addSerie(this._newSerie).subscribe(
             res => {
                 this._serieList.push(res);
-                this.resetData();
+                this.resetData("addSerieModal");
             }
         )
     }

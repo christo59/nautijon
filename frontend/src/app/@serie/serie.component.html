@@ -2,7 +2,7 @@
 <div>
     Liste des series:
 </div>
-<button class="boutton" (click)="ajoutSerie()">
+<button class="boutton" (click)="ajoutSerieModal('addSerieModal')">
     ajouter une serie
 </button>
 
@@ -62,26 +62,20 @@
         </tr>
 </table>
 
-<popin [size]="'big'" #ajoutSeriePopin (cancel_EE)="resetData()">
-    <div modal-header class="titre">
-        Ajout d'une serie
-    </div>
-    <div modal-body>
-        titre: <input type="text" [(ngModel)]="_newSerie.titre"/>
-        langue: <input type="text" [(ngModel)]="_newSerie.langue"/>
-        dateSortie: <input type="text" [(ngModel)]="_newSerie.dateSortie"/>
-        genre: <input type="text" [(ngModel)]="_newSerie.genre"/>
-        realisateur: <input type="text" [(ngModel)]="_newSerie.realisateur"/>
-        type: <input type="text" [(ngModel)]="_newSerie.type"/>
-        nombre d'episode : <input type="text" [(ngModel)]="_newSerie.nbEpisode"/>
-        theme: <input type="text" [(ngModel)]="_newSerie.theme"/>
-        societeProduction: <input type="text" [(ngModel)]="_newSerie.societeProduction"/>
-        resume: <input type="text" [(ngModel)]="_newSerie.resume"/>
-    </div>
-    <div modal-footer>
-        <button (click)="addSerie()">
-            valider
-        </button>
-    </div>
-</popin>
+
+<jw-modal id="addSerieModal">
+    <h1>Ajout d'un film</h1>
+    titre: <input type="text" [(ngModel)]="_newSerie.titre"/><br>
+    langue: <input type="text" [(ngModel)]="_newSerie.langue"/><br>
+    dateSortie: <input type="text" [(ngModel)]="_newSerie.dateSortie"/><br>
+    genre: <input type="text" [(ngModel)]="_newSerie.genre"/><br>
+    realisateur: <input type="text" [(ngModel)]="_newSerie.realisateur"/><br>
+    type: <input type="text" [(ngModel)]="_newSerie.type"/><br>
+    duree: <input type="text" [(ngModel)]="_newSerie.nbEpisode"/><br>
+    theme: <input type="text" [(ngModel)]="_newSerie.theme"/><br>
+    societeProduction: <input type="text" [(ngModel)]="_newSerie.societeProduction"/><br>
+    resume: <input type="text" [(ngModel)]="_newSerie.resume"/><br>
+    <button (click)="addSerie()">Valider</button>
+    <button (click)="resetData('addSerieModal');">Annuler</button>
+</jw-modal>
 

@@ -1,8 +1,7 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
+import {Component,OnInit} from "@angular/core";
 import {Musique} from "./beans/Musique";
 import {MusiqueService} from "./musique.service";
-import {PopinComponent} from "../@popin/popin.component";
-import {Film} from "../@film/beans/Film";
+import {ModalService} from "../@modal/modal.service";
 
 @Component({
     selector: 'musique',
@@ -11,12 +10,11 @@ import {Film} from "../@film/beans/Film";
 })
 export class MusiqueComponent {
 
-    @ViewChild('ajoutMusiquePopin',{static:false}) ajoutMusiquePopin:PopinComponent
-
-    private _musicList: Musique[];
+    private _musicList: Musique[] = [];
     private _newMusique:Musique = new Musique();
 
-    constructor(private _musiqueService: MusiqueService) {}
+    constructor(private _musiqueService: MusiqueService,
+                private _modalService: ModalService) {}
 
     ngOnInit(): void {
         this._musiqueService.getMusicList().subscribe(
@@ -24,23 +22,24 @@ export class MusiqueComponent {
         )
     }
 
-    ajoutMusique():void{
-        this.ajoutMusiquePopin.displayModal();
+    ajoutMusiqueModal(modal):void {
+        this._modalService.open(modal);
     }
-    resetData():void{
-        this.ajoutMusiquePopin.hideModal();
-        this._newMusique=new Musique();
+
+    resetData(modal):void {
+        this._modalService.close(modal);
+        this._newMusique = new Musique();
     }
-    addMusic():void{
+
+    addAnime():void {
         this._newMusique.note=0.0;
         this._newMusique.imagePath="";
         this._musiqueService.addMusic(this._newMusique).subscribe(
             res => {
                 this._musicList.push(res);
-                this.resetData();
+                this.resetData("addMusiqueModal");
             }
         )
     }
-
 
 }

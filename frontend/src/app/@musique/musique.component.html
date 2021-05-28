@@ -1,10 +1,10 @@
 
 <div>
     Liste des musiques:
+    <button class="boutton" (click)="ajoutMusiqueModal('addMusiqueModal')">
+        Ajouter une musique
+    </button>
 </div>
-<button class="boutton" (click)="ajoutMusique()">
-    ajouter une musique
-</button>
 
 <table class="tableau">
     <tr>
@@ -62,25 +62,17 @@
         </tr>
 </table>
 
-
-<popin [size]="'big'" #ajoutMusiquePopin (cancel_EE)="resetData()">
-    <div modal-header class="titre">
-        Ajout d'une musique
-    </div>
-    <div modal-body>
-        titre: <input type="text" [(ngModel)]="_newMusique.titre"/>
-        langue: <input type="text" [(ngModel)]="_newMusique.langue"/>
-        dateSortie: <input type="text" [(ngModel)]="_newMusique.dateSortie"/>
-        genre: <input type="text" [(ngModel)]="_newMusique.genre"/>
-        producteur: <input type="text" [(ngModel)]="_newMusique.producteur"/>
-        album: <input type="text" [(ngModel)]="_newMusique.album"/>
-        duree: <input type="text" [(ngModel)]="_newMusique.duree"/>
-        interpretre: <input type="text" [(ngModel)]="_newMusique.interprete"/>
-        parole: <input type="text" [(ngModel)]="_newMusique.paroles"/>
-    </div>
-    <div modal-footer>
-        <button (click)="addMusic()">
-            valider
-        </button>
-    </div>
-</popin>
+<jw-modal id="addMusiqueModal">
+    <h1>Ajout d'un film</h1>
+    titre: <input type="text" [(ngModel)]="_newMusique.titre"/><br>
+    langue: <input type="text" [(ngModel)]="_newMusique.langue"/><br>
+    dateSortie: <input type="text" [(ngModel)]="_newMusique.dateSortie"/><br>
+    genre: <input type="text" [(ngModel)]="_newMusique.genre"/><br>
+    realisateur: <input type="text" [(ngModel)]="_newMusique.interprete"/><br>
+    type: <input type="text" [(ngModel)]="_newMusique.album"/><br>
+    duree: <input type="text" [(ngModel)]="_newMusique.duree"/><br>
+    theme: <input type="text" [(ngModel)]="_newMusique.producteur"/><br>
+    societeProduction: <input type="text" [(ngModel)]="_newMusique.paroles"/><br>
+    <button (click)="addAnime()">Valider</button>
+    <button (click)="resetData('addMusiqueModal');">Annuler</button>
+</jw-modal>
