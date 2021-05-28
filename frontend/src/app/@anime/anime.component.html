@@ -46,34 +46,31 @@
             </div>
         </td>
     </tr>
-    <div *ngFor="let anime of _animeList">
-        <tr>
-            <td>
+        <tr *ngFor="let anime of _animeList">
+            <td class="titre">
                 {{anime.titre}}
             </td>
-            <td>
+            <td class="titre">
                 {{anime.type}}
             </td>
-            <td>
+            <td class="titre">
                 {{anime.genre}}
             </td>
-            <td>
+            <td class="titre">
                 {{anime.nbEpisode}}
             </td>
-            <td>
+            <td class="titre">
                 {{anime.dateSortie}}
             </td>
-            <td>
+            <td class="titre">
                 {{anime.theme}}
             </td>
-            <td>
+            <td class="titre">
                 {{anime.langue}}
             </td>
-            <td>
+            <td class="titre">
                 {{anime.note}}
             </td>
-
         </tr>
-    </div>
 </table>
 
