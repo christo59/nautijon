@@ -11,5 +11,6 @@ export class Film {
     public duree: string = "";
     public theme: string = "";
     public societeProduction: string = "";
+    public resume: string = "";
 
 }

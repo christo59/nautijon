@@ -10,5 +10,6 @@ export class Musique {
     public album: string = "";
     public duree: string = "";
     public producteur: string = "";
+    public paroles: string = "";
 
 }

@@ -11,5 +11,6 @@ export class Serie {
     public nbEpisode: string = "";
     public theme: string = "";
     public societeProduction: string = "";
+    public resume: string = "";
 
 }

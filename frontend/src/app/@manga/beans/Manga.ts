@@ -10,5 +10,6 @@ export class Manga {
     public theme: string = "";
     public editeur: string = "";
     public type: string = "";
+    public resume: string = "";
 
 }

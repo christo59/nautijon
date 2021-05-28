@@ -11,5 +11,6 @@ export class Anime {
     public nbEpisode: string = "";
     public theme: string = "";
     public studioAnimation: string = "";
+    public resume: string = "";
 
 }

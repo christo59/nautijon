@@ -10,5 +10,6 @@ export class JeuVideo {
     public createur: string = "";
     public modeDeJeu: string = "";
     public plateforme: string = "";
+    public resume: string = "";
 
 }
