@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AnimeRepository extends PagingAndSortingRepository<Anime,Long> {
 
-    @Query("CREATE (a:Film {imagePath:{anime}.imagePath, titre:{anime}.titre, langue:{anime}.langue, dateSortie:{anime}.dateSortie, genre:{anime}.genre, note:{anime}.note, createur:{anime}.createur, type:{anime}.type, nbEpisode:{anime}.nbEpisode, theme:{anime}.theme, editeur:{anime}.editeur, studioAnimation:{anime}.studioAnimation, resume:{anime}.resume}) RETURN a")
+    @Query("CREATE (a:Anime {imagePath:{anime}.imagePath, titre:{anime}.titre, langue:{anime}.langue, dateSortie:{anime}.dateSortie, genre:{anime}.genre, note:{anime}.note, createur:{anime}.createur, type:{anime}.type, nbEpisode:{anime}.nbEpisode, theme:{anime}.theme, editeur:{anime}.editeur, studioAnimation:{anime}.studioAnimation, resume:{anime}.resume}) RETURN a")
     Anime addAnime(@Param("anime") Anime anime);
 
     @Query("MATCH (a:Anime {titre:{anime}.titre}) " +

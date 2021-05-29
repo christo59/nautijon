@@ -2,7 +2,6 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Film} from "./beans/Film";
-import {Anime} from "../@anime/beans/Anime";
 
 @Injectable()
 export class FilmService {
