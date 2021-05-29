@@ -33,8 +33,8 @@
                 Note
         </td>
     </tr>
-        <tr *ngFor="let anime of _animeList">
-            <td class="titre ecriture">
+        <tr *ngFor="let anime of _animeList"  (click)="selectAnime('selectedAnimeModal',anime)">
+            <td class="titre ecriture" >
                 {{anime.titre}}
             </td>
             <td class="titre ecriture">
@@ -62,17 +62,99 @@
 </table>
 
 <jw-modal id="addAnimeModal">
-    <h1>Ajout d'un film</h1>
+    <h1>Ajout d'un anime</h1>
     titre: <input type="text" [(ngModel)]="_newAnime.titre"/><br>
     langue: <input type="text" [(ngModel)]="_newAnime.langue"/><br>
     dateSortie: <input type="text" [(ngModel)]="_newAnime.dateSortie"/><br>
     genre: <input type="text" [(ngModel)]="_newAnime.genre"/><br>
-    realisateur: <input type="text" [(ngModel)]="_newAnime.createur"/><br>
+    createur: <input type="text" [(ngModel)]="_newAnime.createur"/><br>
     type: <input type="text" [(ngModel)]="_newAnime.type"/><br>
-    duree: <input type="text" [(ngModel)]="_newAnime.nbEpisode"/><br>
+    nb d'episode: <input type="text" [(ngModel)]="_newAnime.nbEpisode"/><br>
     theme: <input type="text" [(ngModel)]="_newAnime.theme"/><br>
-    societeProduction: <input type="text" [(ngModel)]="_newAnime.studioAnimation"/><br>
+    studioAnimation: <input type="text" [(ngModel)]="_newAnime.studioAnimation"/><br>
     resume: <input type="text" [(ngModel)]="_newAnime.resume"/><br>
     <button (click)="addAnime()">Valider</button>
+    <button (click)="resetData('addAnimeModal');">Annuler</button>
+</jw-modal>
+
+<jw-modal id="selectedAnimeModal">
+    <h1 class="titre">{{_selectedAnime.titre}}</h1>
+    <div class="categorie">
+        Titre
+    </div>
+    <div class="info">
+        {{_selectedAnime.titre}}
+    </div>
+
+    <div class="categorie">
+        Type
+    </div>
+    <div class="info">
+        {{_selectedAnime.type}}
+    </div>
+
+    <div class="categorie">
+        Langue
+    </div>
+    <div class="info">
+        {{_selectedAnime.langue}}
+    </div>
+
+    <div class="categorie">
+        Date de sortie
+    </div>
+    <div class="info">
+        {{_selectedAnime.dateSortie}}
+    </div>
+
+    <div class="categorie">
+        createur
+    </div>
+    <div class="info">
+        {{_selectedAnime.createur}}
+    </div>
+
+    <div class="categorie">
+        Studio d'animation
+    </div>
+    <div class="info">
+        {{_selectedAnime.studioAnimation}}
+    </div>
+
+    <div class="categorie">
+        Titre
+    </div>
+    <div class="info">
+        {{_selectedAnime.titre}}
+    </div>
+
+    <div class="categorie">
+        Genre
+    </div>
+    <div class="info">
+        {{_selectedAnime.genre}}
+    </div>
+
+    <div class="categorie">
+        Theme
+    </div>
+    <div class="info">
+        {{_selectedAnime.theme}}
+    </div>
+
+    <div class="categorie">
+        Nombre d'episode
+    </div>
+    <div class="info">
+        {{_selectedAnime.nbEpisode}}
+    </div>
+
+    <div class="categorie">
+        Resume
+    </div>
+    <div class="info">
+        {{_selectedAnime.resume}}
+    </div>
+
     <button (click)="resetData('addAnimeModal');">Annuler</button>
 </jw-modal>

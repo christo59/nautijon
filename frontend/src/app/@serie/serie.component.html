@@ -1,10 +1,11 @@
 
-<div>
+<div class="presentation">
     Liste des series:
+    <button class="boutton" (click)="ajoutSerieModal('addSerieModal')">
+        ajouter une serie
+    </button>
 </div>
-<button class="boutton" (click)="ajoutSerieModal('addSerieModal')">
-    ajouter une serie
-</button>
+
 
 <table class="tableau">
     <tr>
@@ -64,14 +65,14 @@
 
 
 <jw-modal id="addSerieModal">
-    <h1>Ajout d'un film</h1>
+    <h1>Ajout d'une serie</h1>
     titre: <input type="text" [(ngModel)]="_newSerie.titre"/><br>
     langue: <input type="text" [(ngModel)]="_newSerie.langue"/><br>
     dateSortie: <input type="text" [(ngModel)]="_newSerie.dateSortie"/><br>
     genre: <input type="text" [(ngModel)]="_newSerie.genre"/><br>
     realisateur: <input type="text" [(ngModel)]="_newSerie.realisateur"/><br>
     type: <input type="text" [(ngModel)]="_newSerie.type"/><br>
-    duree: <input type="text" [(ngModel)]="_newSerie.nbEpisode"/><br>
+    nb d'episode: <input type="text" [(ngModel)]="_newSerie.nbEpisode"/><br>
     theme: <input type="text" [(ngModel)]="_newSerie.theme"/><br>
     societeProduction: <input type="text" [(ngModel)]="_newSerie.societeProduction"/><br>
     resume: <input type="text" [(ngModel)]="_newSerie.resume"/><br>

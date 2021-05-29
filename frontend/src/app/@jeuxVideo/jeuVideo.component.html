@@ -1,5 +1,5 @@
 
-<div>
+<div class="presentation">
     Liste des Jeux-videos:
     <button class="boutton" (click)="ajoutJeuVideoModal('addJeuVideoModal')">
         Ajouter un JeuVideo
@@ -60,15 +60,15 @@
 
 <jw-modal id="addJeuVideoModal">
     <h1>Ajout d'un JeuVideo</h1>
-    titre: <input type="text" [(ngModel)]="_newJeuVideo.titre"/>
-    langue: <input type="text" [(ngModel)]="_newJeuVideo.langue"/>
-    dateSortie: <input type="text" [(ngModel)]="_newJeuVideo.dateSortie"/>
-    genre: <input type="text" [(ngModel)]="_newJeuVideo.genre"/>
-    createur: <input type="text" [(ngModel)]="_newJeuVideo.createur"/>
-    type: <input type="text" [(ngModel)]="_newJeuVideo.type"/>
-    mode de jeu: <input type="text" [(ngModel)]="_newJeuVideo.modeDeJeu"/>
-    plateform: <input type="text" [(ngModel)]="_newJeuVideo.plateforme"/>
-    resume: <input type="text" [(ngModel)]="_newJeuVideo.resume"/>
+    titre: <input type="text" [(ngModel)]="_newJeuVideo.titre"/><br>
+    langue: <input type="text" [(ngModel)]="_newJeuVideo.langue"/><br>
+    dateSortie: <input type="text" [(ngModel)]="_newJeuVideo.dateSortie"/><br>
+    genre: <input type="text" [(ngModel)]="_newJeuVideo.genre"/><br>
+    createur: <input type="text" [(ngModel)]="_newJeuVideo.createur"/><br>
+    type: <input type="text" [(ngModel)]="_newJeuVideo.type"/><br>
+    mode de jeu: <input type="text" [(ngModel)]="_newJeuVideo.modeDeJeu"/><br>
+    plateform: <input type="text" [(ngModel)]="_newJeuVideo.plateforme"/><br>
+    resume: <input type="text" [(ngModel)]="_newJeuVideo.resume"/><br>
     <button (click)="addJeuVideo()">Valider</button>
     <button (click)="resetData('addJeuVideoModal');">Annuler</button>
 </jw-modal>

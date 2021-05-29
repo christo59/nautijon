@@ -12,6 +12,7 @@ export class AnimeComponent {
 
     private _animeList: Anime[] = [];
     private _newAnime:Anime = new Anime();
+    private _selectedAnime:Anime = new Anime();
 
     constructor(private _animeService: AnimeService,
                 private _modalService: ModalService) {}
@@ -40,5 +41,9 @@ export class AnimeComponent {
                 this.resetData("addAnimeModal");
             }
         )
+    }
+    selectAnime(modal:string, anime:Anime ):void {
+        this._modalService.open(modal);
+        this._selectedAnime =anime;
     }
 }

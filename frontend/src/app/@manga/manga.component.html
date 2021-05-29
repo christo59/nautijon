@@ -1,4 +1,4 @@
-<div>
+<div class="presentation">
     Liste des mangas:
     <button class="boutton" (click)="ajoutMangaModal('addMangaModal')">
         Ajouter un manga
@@ -64,14 +64,14 @@
 
 
 <jw-modal id="addMangaModal">
-    <h1>Ajout d'un film</h1>
+    <h1>Ajout d'un manga</h1>
     titre: <input type="text" [(ngModel)]="_newManga.titre"/><br>
     langue: <input type="text" [(ngModel)]="_newManga.langue"/><br>
     dateSortie: <input type="text" [(ngModel)]="_newManga.dateSortie"/><br>
     genre: <input type="text" [(ngModel)]="_newManga.genre"/><br>
     editeur: <input type="text" [(ngModel)]="_newManga.editeur"/><br>
     type: <input type="text" [(ngModel)]="_newManga.type"/><br>
-    date de sortie: <input type="text" [(ngModel)]="_newManga.dateSortie"/><br>
+    nombre de chapitre: <input type="text" [(ngModel)]="_newManga.nbChapitre"/><br>
     theme: <input type="text" [(ngModel)]="_newManga.theme"/><br>
     resume: <input type="text" [(ngModel)]="_newManga.resume"/><br>
     <button (click)="addManga()">Valider</button>
