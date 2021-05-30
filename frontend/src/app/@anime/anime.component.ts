@@ -2,6 +2,8 @@ import {Component,OnInit} from "@angular/core";
 import {Anime} from "./beans/Anime";
 import {AnimeService} from "./anime.service";
 import {ModalService} from "../@modal/modal.service";
+import {isNumber} from "util";
+import {NoticeHelper} from "../notice.helper";
 
 @Component({
     selector: 'anime',
@@ -53,12 +55,17 @@ export class AnimeComponent {
         this._selectedAnime = anime;
     }
 
-    addScore(score:number): void {
-        this._animeService.addScoreAnime(score.toString(), this._selectedAnime).subscribe(
-            res => {
-                this._animeList.find(anime => this._selectedAnime === anime).note = res;
-                this._modalService.close(this._addScoreModalName)
-            }
-        );
+    addScore(score:string): void {
+        if (isNumber(score)) {
+            this._animeService.addScoreAnime(score, this._selectedAnime).subscribe(
+                res => {
+                    this._animeList.find(anime => this._selectedAnime === anime).note = res;
+                    this._modalService.close(this._addScoreModalName)
+                }
+            );
+        } else {
+            this._isMarking = false;
+            NoticeHelper.write_notice("La note saisie n'est pas un nombre", "error");
+        }
     }
 }
