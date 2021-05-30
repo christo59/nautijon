@@ -23,4 +23,7 @@ public interface SerieRepository extends PagingAndSortingRepository<Serie,Long> 
             "RETURN {avgScore}")
     Double updateAverageScore(@Param("avgScore") Double avgScore, @Param("serie") Serie serie);
 
+    @Query("MATCH (s:Serie {titre:{serie].titre})\n +" +
+            "return count(s) > 0")
+    boolean serieExist(@Param("serie") Serie serie);
 }
