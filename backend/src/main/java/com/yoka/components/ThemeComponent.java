@@ -76,26 +76,34 @@ public class ThemeComponent {
         return filmRepository.addFilm(film);
     }
 
-    public Double addScore(Double score, Theme theme){
-        if (theme.getClass().equals(Anime.class)){
-            return animeRepository.addScore(score, (Anime) theme);
-        }
-        if (theme.getClass().equals(Film.class)){
-            return filmRepository.addScore(score, (Film) theme);
-        }
-        if (theme.getClass().equals(JeuVideo.class)){
-            return jeuVideoRepository.addScore(score, (JeuVideo) theme);
-        }
-        if (theme.getClass().equals(Manga.class)){
-            return mangaRepository.addScore(score, (Manga) theme);
-        }
-        if (theme.getClass().equals(Musique.class)){
-            return musiqueRepository.addScore(score, (Musique) theme);
-        }
-        if (theme.getClass().equals(Serie.class)){
-            return serieRepository.addScore(score, (Serie) theme);
-        }
-        return 0.0;
+    public Double addScore(Double score, Anime anime){
+        Double nbOfScore = animeRepository.addScore(score, anime) + 1;
+        return animeRepository.updateAverageScore((anime.getNote()+score)/nbOfScore, anime);
+    }
+
+    public Double addScore(Double score, Film film){
+        Double nbOfScore = filmRepository.addScore(score, film) + 1;
+        return filmRepository.updateAverageScore((film.getNote()+score)/nbOfScore, film);
+    }
+
+    public Double addScore(Double score, JeuVideo jeuVideo){
+        Double nbOfScore = jeuVideoRepository.addScore(score, jeuVideo) + 1;
+        return jeuVideoRepository.updateAverageScore((jeuVideo.getNote()+score)/nbOfScore, jeuVideo);
+    }
+
+    public Double addScore(Double score, Manga manga){
+        Double nbOfScore = mangaRepository.addScore(score, manga) + 1;
+        return mangaRepository.updateAverageScore((manga.getNote()+score)/nbOfScore, manga);
+    }
+
+    public Double addScore(Double score, Musique musique){
+        Double nbOfScore = musiqueRepository.addScore(score, musique) + 1;
+        return musiqueRepository.updateAverageScore((musique.getNote()+score)/nbOfScore, musique);
+    }
+
+    public Double addScore(Double score, Serie serie){
+        Double nbOfScore = serieRepository.addScore(score, serie) + 1;
+        return serieRepository.updateAverageScore((serie.getNote()+score)/nbOfScore, serie);
     }
 
 }

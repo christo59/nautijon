@@ -75,10 +75,34 @@ public class ThemeEndpoint {
         return new ResponseEntity<>(themeComponent.addFilm(film), HttpStatus.CREATED);
     }
 
-    @PostMapping(value = "/score/add")
-    public ResponseEntity<Double> addScore(@RequestBody Theme theme, @RequestHeader String score){
-        return new ResponseEntity<>(themeComponent.addScore(Double.parseDouble(score),theme), HttpStatus.OK);
+    @PostMapping(value = "/anime/score/add")
+    public ResponseEntity<Double> addScore(@RequestBody Anime anime, @RequestHeader String score) {
+        return new ResponseEntity<>(themeComponent.addScore(Double.parseDouble(score), anime), HttpStatus.OK);
     }
 
+    @PostMapping(value = "/film/score/add")
+    public ResponseEntity<Double> addScore(@RequestBody Film film, @RequestHeader String score) {
+        return new ResponseEntity<>(themeComponent.addScore(Double.parseDouble(score), film), HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/jeuVideo/score/add")
+    public ResponseEntity<Double> addScore(@RequestBody JeuVideo jeuVideo, @RequestHeader String score) {
+        return new ResponseEntity<>(themeComponent.addScore(Double.parseDouble(score), jeuVideo), HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/manga/score/add")
+    public ResponseEntity<Double> addScore(@RequestBody Manga manga, @RequestHeader String score) {
+        return new ResponseEntity<>(themeComponent.addScore(Double.parseDouble(score), manga), HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/musique/score/add")
+    public ResponseEntity<Double> addScore(@RequestBody Musique musique, @RequestHeader String score) {
+        return new ResponseEntity<>(themeComponent.addScore(Double.parseDouble(score), musique), HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/serie/score/add")
+    public ResponseEntity<Double> addScore(@RequestBody Serie serie, @RequestHeader String score) {
+        return new ResponseEntity<>(themeComponent.addScore(Double.parseDouble(score), serie), HttpStatus.OK);
+    }
 
 }

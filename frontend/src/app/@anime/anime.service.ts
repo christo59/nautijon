@@ -19,7 +19,7 @@ export class AnimeService {
 
     public addScoreAnime(score:string, anime: Anime): Observable<number>{
         const headers = new HttpHeaders().set("score",score);
-        return this._http.post<number>("/anime/add",anime,{headers});
+        return this._http.post<number>("/anime/score/add",anime,{headers});
     }
 
 }

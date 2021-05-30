@@ -12,16 +12,15 @@ public interface MusiqueRepository extends PagingAndSortingRepository<Musique,Lo
     @Query("CREATE (n:Musique {imagePath:{musique}.imagePath, titre:{musique}.titre, langue:{musique}.langue, dateSortie:{musique}.dateSortie, genre:{musique}.genre, note:{musique}.note, interprete:{musique}.interprete, album:{musique}.album, duree:{musique}.duree, producteur:{musique}.producteur, paroles:{musique}.paroles}) RETURN n")
     Musique addMusique(@Param("musique") Musique musique);
 
-    @Query("MATCH (m:Musique {titre:{musique}.titre}) " +
-            "CREATE (m)<-[:HAS_SCORE]-(:Score {score:{score}}) " +
-            "OPTIONAL MATCH (m)<-[:HAS_SCORE]-(s:Score) " +
-            "SET m.note = avg(s) " +
-            "RETURN avg(s)")
+    @Query("MATCH (m:Musique {titre:{musique}.titre})\n" +
+            "OPTIONAL MATCH (m)<-[:HAS_SCORE]-(s:Score)\n" +
+            "CREATE (m)<-[:HAS_SCORE]-(:Score {score:{score}})\n" +
+            "RETURN count(s)")
     Double addScore(@Param("score") Double score, @Param("musique") Musique musique);
 
-    @Query("MATCH (n:Musique {titre:{musique}.titre})\n" +
-            "OPTIONAL MATCH (n)<-[:HAS_SCORE]-(s:Score)\n" +
-            "RETURN CASE WHEN avg(s.score) IS NOT NULL THEN avg(s.score) ELSE 0.0 END")
-    Double getAverageScore(@Param("musique") Musique musique);
+    @Query("MATCH (m:Musique {titre:{musique}.titre})\n" +
+            "SET m.note = {avgScore}\n" +
+            "RETURN {avgScore}")
+    Double updateAverageScore(@Param("avgScore") Double avgScore, @Param("musique") Musique musique);
 
 }

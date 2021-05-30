@@ -2,8 +2,6 @@ import {Component,OnInit} from "@angular/core";
 import {Anime} from "./beans/Anime";
 import {AnimeService} from "./anime.service";
 import {ModalService} from "../@modal/modal.service";
-import {isNumber} from "util";
-import {NoticeHelper} from "../notice.helper";
 
 @Component({
     selector: 'anime',
@@ -15,11 +13,11 @@ export class AnimeComponent {
     private _animeList: Anime[] = [];
     private _newAnime:Anime = new Anime();
     private _selectedAnime:Anime = new Anime();
+    private _isSettingPassword:boolean = false;
     private _isMarking:boolean = false;
 
     private _selectAnimeModalName: string = "selectAnimeModal";
     private _addAnimeModalName: string = "addAnimeModal";
-    private _addScoreModalName: string = "addScoreModal";
 
 
     constructor(private _animeService: AnimeService,
@@ -31,8 +29,11 @@ export class AnimeComponent {
         )
     }
 
-    openModal(modal):void {
-        this._modalService.open(modal);
+    openModal(modal: string, password?:string):void {
+        if( password == "abc" || password == undefined){
+            this._modalService.open(modal);
+            this._isSettingPassword = false;
+        }
     }
 
     resetData(modal):void {
@@ -58,16 +59,13 @@ export class AnimeComponent {
     }
 
     addScore(score:string): void {
-        if (isNumber(score)) {
+        if (!isNaN(Number(score))) {
             this._animeService.addScoreAnime(score, this._selectedAnime).subscribe(
                 res => {
                     this._animeList.find(anime => this._selectedAnime === anime).note = res;
-                    this._modalService.close(this._addScoreModalName)
+                    this._isMarking = false;
                 }
             );
-        } else {
-            this._isMarking = false;
-            NoticeHelper.write_notice("La note saisie n'est pas un nombre", "error");
         }
     }
 
