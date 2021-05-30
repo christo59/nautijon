@@ -34,28 +34,28 @@
         </td>
     </tr>
         <tr *ngFor="let anime of _animeList"  (click)="selectAnime('selectedAnimeModal',anime)">
-            <td class="titre ecriture" >
+            <td class="colonne ecriture" >
                 {{anime.titre}}
             </td>
-            <td class="titre ecriture">
+            <td class="colonne ecriture">
                 {{anime.type}}
             </td>
-            <td class="titre ecriture">
+            <td class="colonne ecriture">
                 {{anime.genre}}
             </td>
-            <td class="titre ecriture">
+            <td class="colonne ecriture">
                 {{anime.nbEpisode}}
             </td>
-            <td class="titre ecriture">
+            <td class="colonne ecriture">
                 {{anime.dateSortie}}
             </td>
-            <td class="titre ecriture">
+            <td class="colonne ecriture">
                 {{anime.theme}}
             </td>
-            <td class="titre ecriture">
+            <td class="colonne ecriture">
                 {{anime.langue}}
             </td>
-            <td class="titre ecriture">
+            <td class="colonne ecriture">
                 {{anime.note}}
             </td>
         </tr>
@@ -119,13 +119,6 @@
     </div>
     <div class="info">
         {{_selectedAnime.studioAnimation}}
-    </div>
-
-    <div class="categorie">
-        Titre
-    </div>
-    <div class="info">
-        {{_selectedAnime.titre}}
     </div>
 
     <div class="categorie">

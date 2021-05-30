@@ -32,7 +32,7 @@
         </td>
     </tr>
 
-        <tr *ngFor="let jeu of _videoGameList">
+        <tr *ngFor="let jeu of _videoGameList" (click)="selectJeuVideo('selectedJeuVideoModal',jeu)">
             <td class="colonne ecriture">
                 {{jeu.titre}}
             </td>
@@ -71,4 +71,73 @@
     resume: <input type="text" [(ngModel)]="_newJeuVideo.resume"/><br>
     <button (click)="addJeuVideo()">Valider</button>
     <button (click)="resetData('addJeuVideoModal');">Annuler</button>
+</jw-modal>
+
+<jw-modal id="selectedAnimeModal">
+    <h1 class="titre">{{_selectedJeuVideo.titre}}</h1>
+    <div class="categorie">
+        Titre
+    </div>
+    <div class="info">
+        {{_selectedJeuVideo.titre}}
+    </div>
+
+    <div class="categorie">
+        Type
+    </div>
+    <div class="info">
+        {{_selectedJeuVideo.type}}
+    </div>
+
+    <div class="categorie">
+        Langue
+    </div>
+    <div class="info">
+        {{_selectedJeuVideo.langue}}
+    </div>
+
+    <div class="categorie">
+        Date de sortie
+    </div>
+    <div class="info">
+        {{_selectedJeuVideo.dateSortie}}
+    </div>
+
+    <div class="categorie">
+        createur
+    </div>
+    <div class="info">
+        {{_selectedJeuVideo.createur}}
+    </div>
+
+    <div class="categorie">
+        Plateforme
+    </div>
+    <div class="info">
+        {{_selectedJeuVideo.plateforme}}
+    </div>
+
+    <div class="categorie">
+        Genre
+    </div>
+    <div class="info">
+        {{_selectedJeuVideo.genre}}
+    </div>
+
+    <div class="categorie">
+        Mode de jeu
+    </div>
+    <div class="info">
+        {{_selectedJeuVideo.modeDeJeu}}
+    </div>
+
+
+    <div class="categorie">
+        Resume
+    </div>
+    <div class="info">
+        {{_selectedJeuVideo.resume}}
+    </div>
+
+    <button (click)="resetData('addFilmModal');">Annuler</button>
 </jw-modal>

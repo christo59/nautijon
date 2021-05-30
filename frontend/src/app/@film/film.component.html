@@ -32,7 +32,7 @@
         <td class="titre colonne" >
                 Note
         </td>
-        <tr *ngFor="let film of _filmList">
+        <tr *ngFor="let film of _filmList" (click)="selectFilm('selectedFilmModal',film)">
             <td class="colonne ecriture">
                 {{film.titre}}
             </td>
@@ -77,3 +77,77 @@
     <button (click)="resetData('addFilmModal');">Annuler</button>
 </jw-modal>
 
+<jw-modal id="selectedFilmModal">
+    <h1 class="titre">{{_selectedFilm.titre}}</h1>
+    <div class="categorie">
+        Titre
+    </div>
+    <div class="info">
+        {{_selectedFilm.titre}}
+    </div>
+
+    <div class="categorie">
+        Type
+    </div>
+    <div class="info">
+        {{_selectedFilm.type}}
+    </div>
+
+    <div class="categorie">
+        Langue
+    </div>
+    <div class="info">
+        {{_selectedFilm.langue}}
+    </div>
+
+    <div class="categorie">
+        Date de sortie
+    </div>
+    <div class="info">
+        {{_selectedFilm.dateSortie}}
+    </div>
+
+    <div class="categorie">
+        Realisateur
+    </div>
+    <div class="info">
+        {{_selectedFilm.realisateur}}
+    </div>
+
+    <div class="categorie">
+        Societe de Production
+    </div>
+    <div class="info">
+        {{_selectedFilm.societeProduction}}
+    </div>
+
+    <div class="categorie">
+        Genre
+    </div>
+    <div class="info">
+        {{_selectedFilm.genre}}
+    </div>
+
+    <div class="categorie">
+        Theme
+    </div>
+    <div class="info">
+        {{_selectedFilm.theme}}
+    </div>
+
+    <div class="categorie">
+        Duree
+    </div>
+    <div class="info">
+        {{_selectedFilm.duree}}
+    </div>
+
+    <div class="categorie">
+        Resume
+    </div>
+    <div class="info">
+        {{_selectedFilm.resume}}
+    </div>
+
+    <button (click)="resetData('addFilmModal');">Annuler</button>
+</jw-modal>

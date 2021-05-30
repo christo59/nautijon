@@ -2,6 +2,7 @@ import {Component,OnInit} from "@angular/core";
 import {ModalService} from "../@modal/modal.service";
 import {JeuVideo} from "./beans/JeuVideo";
 import {JeuVideoService} from "./jeuVideo.service";
+import {Anime} from "../@anime/beans/Anime";
 
 
 @Component({
@@ -13,6 +14,7 @@ export class JeuVideoComponent {
 
     private _videoGameList: JeuVideo[];
     private _newJeuVideo:JeuVideo= new JeuVideo();
+    private _selectedJeuVideo:JeuVideo = new JeuVideo();
 
     constructor(private _jeuVideoService: JeuVideoService,
                 private _modalService: ModalService) {}
@@ -43,4 +45,8 @@ export class JeuVideoComponent {
         )
     }
 
+    selectJeuVideo(modal:string, JeuVideo:JeuVideo ):void {
+        this._modalService.open(modal);
+        this._selectedJeuVideo =JeuVideo;
+    }
 }

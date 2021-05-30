@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {Film} from "./beans/Film";
 import {FilmService} from "./film.service";
 import {ModalService} from "../@modal/modal.service";
+import {Anime} from "../@anime/beans/Anime";
 
 @Component({
     selector: 'musique',
@@ -12,6 +13,7 @@ export class FilmComponent {
 
     private _filmList: Film[] = [];
     private _newFilm:Film = new Film();
+    private _selectedFilm:Film = new Film();
 
     constructor(private _filmService: FilmService,
                 private _modalService: ModalService) {}
@@ -40,6 +42,10 @@ export class FilmComponent {
                 this.resetData("addFilmModal");
             }
         )
+    }
+    selectFilm(modal:string, film:Film ):void {
+        this._modalService.open(modal);
+        this._selectedFilm =film;
     }
 
 }

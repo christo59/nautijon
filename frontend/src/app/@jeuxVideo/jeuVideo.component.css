@@ -42,3 +42,12 @@
     background-color: blue;
     transition: 0.5s all;
 }
+.categorie{
+    font-size: 100%;
+    color: #0074D9;
+    text-align: center;
+}
+.info {
+    font-size: 70%;
+    text-align: center;
+}
