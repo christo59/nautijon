@@ -1,7 +1,7 @@
 
 <div class="presentation">
     Liste des animes:
-    <button class="boutton" (click)="ajoutAnimeModal(_addAnimeModalName)">
+    <button class="boutton" (click)="openModal(_addAnimeModalName)">
         Ajouter un anime
     </button>
 </div>
@@ -80,6 +80,30 @@
 <jw-modal id="{{_selectAnimeModalName}}}">
     <h1 class="titre">{{_selectedAnime.titre}}</h1>
     <div class="categorie">
+        Note
+    </div>
+    <div class="info">
+        {{_selectedAnime.note}}
+    </div>
+    <button class="boutton" *ngIf="_isMarking==false" (click)="_isMarking=true">
+        Noter
+    </button>
+    <div *ngIf="_isMarking==true">
+        <input type="number" #scoreinput />
+        <button (click)="addScore(scoreinput.value)">
+            <span >
+                &#10003;
+            </span>
+        </button>
+        <button (click)="_isMarking=false">
+            <span >
+                &#10008;
+            </span>
+        </button>
+    </div>
+
+
+    <div class="categorie">
         Titre
     </div>
     <div class="info">
@@ -151,3 +175,4 @@
 
     <button (click)="resetData(_selectAnimeModalName);">Annuler</button>
 </jw-modal>
+

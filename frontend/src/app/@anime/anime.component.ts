@@ -15,10 +15,12 @@ export class AnimeComponent {
     private _animeList: Anime[] = [];
     private _newAnime:Anime = new Anime();
     private _selectedAnime:Anime = new Anime();
+    private _isMarking:boolean = false;
 
     private _selectAnimeModalName: string = "selectAnimeModal";
     private _addAnimeModalName: string = "addAnimeModal";
     private _addScoreModalName: string = "addScoreModal";
+
 
     constructor(private _animeService: AnimeService,
                 private _modalService: ModalService) {}
@@ -29,7 +31,7 @@ export class AnimeComponent {
         )
     }
 
-    ajoutAnimeModal(modal):void {
+    openModal(modal):void {
         this._modalService.open(modal);
     }
 
@@ -68,4 +70,5 @@ export class AnimeComponent {
             NoticeHelper.write_notice("La note saisie n'est pas un nombre", "error");
         }
     }
+
 }

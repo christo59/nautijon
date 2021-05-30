@@ -21,13 +21,13 @@
     color: darkgreen;
     text-align: center;
 }
-.ajout .boutton{
+.boutton{
     display: inline-block;
     list-style-type: none;
     width: 14%;
 }
 
-.ajout .boutton a{
+.boutton a{
     color: blue;
     background-color: brown;
     text-decoration: none;
@@ -37,7 +37,7 @@
     justify-content: center;
 }
 
-.ajout boutton:hover a{
+boutton:hover a{
     color: brown;
     background-color: blue;
     transition: 0.5s all;
