@@ -16,5 +16,8 @@ export class AnimeService {
     public addAnime(anime: Anime): Observable<Anime>{
         return this._http.post<Anime>("/anime/add",anime)
     }
+    public addScoreAnime(score:double,anime: Anime): Observable<Anime>{
+        return this._http.post<Anime>("/anime/add",anime)
+    }
 
 }
