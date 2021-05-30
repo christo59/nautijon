@@ -76,8 +76,8 @@ public class ThemeEndpoint {
     }
 
     @PostMapping(value = "/score/add")
-    public ResponseEntity<Double> addScore(@RequestBody Theme theme, @RequestHeader Double score){
-        return new ResponseEntity<>(themeComponent.addScore(score,theme), HttpStatus.OK);
+    public ResponseEntity<Double> addScore(@RequestBody Theme theme, @RequestHeader String score){
+        return new ResponseEntity<>(themeComponent.addScore(Double.parseDouble(score),theme), HttpStatus.OK);
     }
 
 

@@ -14,6 +14,10 @@ export class AnimeComponent {
     private _newAnime:Anime = new Anime();
     private _selectedAnime:Anime = new Anime();
 
+    private _selectAnimeModalName: string = "selectAnimeModal";
+    private _addAnimeModalName: string = "addAnimeModal";
+    private _addScoreModalName: string = "addScoreModal";
+
     constructor(private _animeService: AnimeService,
                 private _modalService: ModalService) {}
 
@@ -30,6 +34,7 @@ export class AnimeComponent {
     resetData(modal):void {
         this._modalService.close(modal);
         this._newAnime = new Anime();
+        this._selectedAnime = new Anime();
     }
 
     addAnime():void {
@@ -38,12 +43,22 @@ export class AnimeComponent {
         this._animeService.addAnime(this._newAnime).subscribe(
             res => {
                 this._animeList.push(res);
-                this.resetData("addAnimeModal");
+                this.resetData(this._addAnimeModalName);
             }
         )
     }
+
     selectAnime(modal:string, anime:Anime ):void {
         this._modalService.open(modal);
-        this._selectedAnime =anime;
+        this._selectedAnime = anime;
+    }
+
+    addScore(score:number): void {
+        this._animeService.addScoreAnime(score.toString(), this._selectedAnime).subscribe(
+            res => {
+                this._animeList.find(anime => this._selectedAnime === anime).note = res;
+                this._modalService.close(this._addScoreModalName)
+            }
+        );
     }
 }

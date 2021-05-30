@@ -1,7 +1,7 @@
 
 <div class="presentation">
     Liste des animes:
-    <button class="boutton" (click)="ajoutAnimeModal('addAnimeModal')">
+    <button class="boutton" (click)="ajoutAnimeModal(_addAnimeModalName)">
         Ajouter un anime
     </button>
 </div>
@@ -33,7 +33,7 @@
                 Note
         </td>
     </tr>
-        <tr *ngFor="let anime of _animeList"  (click)="selectAnime('selectedAnimeModal',anime)">
+        <tr *ngFor="let anime of _animeList" (click)="selectAnime(_selectAnimeModalName,anime)">
             <td class="colonne ecriture" >
                 {{anime.titre}}
             </td>
@@ -61,7 +61,7 @@
         </tr>
 </table>
 
-<jw-modal id="addAnimeModal">
+<jw-modal id="{{_addAnimeModalName}}">
     <h1>Ajout d'un anime</h1>
     titre: <input type="text" [(ngModel)]="_newAnime.titre"/><br>
     langue: <input type="text" [(ngModel)]="_newAnime.langue"/><br>
@@ -74,10 +74,10 @@
     studioAnimation: <input type="text" [(ngModel)]="_newAnime.studioAnimation"/><br>
     resume: <input type="text" [(ngModel)]="_newAnime.resume"/><br>
     <button (click)="addAnime()">Valider</button>
-    <button (click)="resetData('addAnimeModal');">Annuler</button>
+    <button (click)="resetData(_addAnimeModalName);">Annuler</button>
 </jw-modal>
 
-<jw-modal id="selectedAnimeModal">
+<jw-modal id="{{_selectAnimeModalName}}}">
     <h1 class="titre">{{_selectedAnime.titre}}</h1>
     <div class="categorie">
         Titre
@@ -149,5 +149,5 @@
         {{_selectedAnime.resume}}
     </div>
 
-    <button (click)="resetData('addAnimeModal');">Annuler</button>
+    <button (click)="resetData(_selectAnimeModalName);">Annuler</button>
 </jw-modal>

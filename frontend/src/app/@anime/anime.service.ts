@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Anime} from "./beans/Anime";
 
@@ -16,8 +16,10 @@ export class AnimeService {
     public addAnime(anime: Anime): Observable<Anime>{
         return this._http.post<Anime>("/anime/add",anime)
     }
-    public addScoreAnime(score:double,anime: Anime): Observable<Anime>{
-        return this._http.post<Anime>("/anime/add",anime)
+
+    public addScoreAnime(score:string, anime: Anime): Observable<number>{
+        const headers = new HttpHeaders().set("score",score);
+        return this._http.post<number>("/anime/add",anime,{headers});
     }
 
 }
