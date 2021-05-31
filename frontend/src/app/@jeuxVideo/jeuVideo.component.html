@@ -1,9 +1,14 @@
 
 <div class="presentation">
     Liste des Jeux-videos:
-    <button class="boutton" (click)="ajoutJeuVideoModal('addJeuVideoModal')">
+    <button class="boutton" *ngIf="_isSettingPassword == false" (click)="_isSettingPassword = true">
         Ajouter un JeuVideo
     </button>
+    <div *ngIf="_isSettingPassword">
+        <input  type="text" #password />
+        <button (click)="openModal(_addJeuVideoModalName, password.value)"><span>&#10003;</span></button>
+        <button (click)="_isSettingPassword = false"><span>&#10008;</span></button>
+    </div>
 </div>
 
 
@@ -32,7 +37,7 @@
         </td>
     </tr>
 
-        <tr *ngFor="let jeu of _videoGameList" (click)="selectJeuVideo('selectedJeuVideoModal',jeu)">
+        <tr *ngFor="let jeu of _JeuVideoList" (click)="selectJeuVideo(_selectJeuVideoModalName,jeu)">
             <td class="colonne ecriture">
                 {{jeu.titre}}
             </td>
@@ -58,7 +63,7 @@
         </tr>
 </table>
 
-<jw-modal id="addJeuVideoModal">
+<jw-modal id="{{_addJeuVideoModalName}}" class="popup">
     <h1>Ajout d'un JeuVideo</h1>
     titre: <input type="text" [(ngModel)]="_newJeuVideo.titre"/><br>
     langue: <input type="text" [(ngModel)]="_newJeuVideo.langue"/><br>
@@ -70,11 +75,35 @@
     plateform: <input type="text" [(ngModel)]="_newJeuVideo.plateforme"/><br>
     resume: <input type="text" [(ngModel)]="_newJeuVideo.resume"/><br>
     <button (click)="addJeuVideo()">Valider</button>
-    <button (click)="resetData('addJeuVideoModal');">Annuler</button>
+    <button (click)="resetData(_addJeuVideoModalName);">Annuler</button>
 </jw-modal>
 
-<jw-modal id="selectedAnimeModal">
+<jw-modal id="{{_selectJeuVideoModalName}}}" class="popup">
     <h1 class="titre">{{_selectedJeuVideo.titre}}</h1>
+
+    <div class="categorie">
+        Note
+    </div>
+    <div class="info">
+        {{_selectedJeuVideo.note}}
+    </div>
+    <button class="boutton" *ngIf="_isMarking==false" (click)="_isMarking=true">
+        Noter
+    </button>
+    <div *ngIf="_isMarking==true">
+        <input type="number" #scoreinput />
+        <button (click)="addScore(scoreinput.value)">
+            <span >
+                &#10003;
+            </span>
+        </button>
+        <button (click)="_isMarking=false">
+            <span >
+                &#10008;
+            </span>
+        </button>
+    </div>
+
     <div class="categorie">
         Titre
     </div>
@@ -139,5 +168,5 @@
         {{_selectedJeuVideo.resume}}
     </div>
 
-    <button (click)="resetData('addFilmModal');">Annuler</button>
+    <button (click)="resetData(_selectJeuVideoModalName);">Annuler</button>
 </jw-modal>

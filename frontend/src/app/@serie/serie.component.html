@@ -1,9 +1,13 @@
 
 <div class="presentation">
     Liste des series:
-    <button class="boutton" (click)="ajoutSerieModal('addSerieModal')">
-        ajouter une serie
+    <button class="boutton" *ngIf="_isSettingPassword == false" (click)="_isSettingPassword = true">        ajouter une serie
     </button>
+    <div *ngIf="_isSettingPassword">
+        <input  type="text" #password />
+        <button (click)="openModal(_addSerieModalName, password.value)"><span>&#10003;</span></button>
+        <button (click)="_isSettingPassword = false"><span>&#10008;</span></button>
+    </div>
 </div>
 
 
@@ -34,7 +38,7 @@
                 Note
         </td>
     </tr>
-        <tr *ngFor="let serie of _serieList">
+        <tr *ngFor="let serie of _serieList" (click)="selectSerie(_selectSerieModalName,serie)">
             <td class="colonne ecriture">
                 {{serie.titre}}
             </td>
@@ -64,7 +68,7 @@
 </table>
 
 
-<jw-modal id="addSerieModal">
+<jw-modal id="{{_addSerieModalName}}" class="popup">
     <h1>Ajout d'une serie</h1>
     titre: <input type="text" [(ngModel)]="_newSerie.titre"/><br>
     langue: <input type="text" [(ngModel)]="_newSerie.langue"/><br>
@@ -77,6 +81,104 @@
     societeProduction: <input type="text" [(ngModel)]="_newSerie.societeProduction"/><br>
     resume: <input type="text" [(ngModel)]="_newSerie.resume"/><br>
     <button (click)="addSerie()">Valider</button>
-    <button (click)="resetData('addSerieModal');">Annuler</button>
+    <button (click)="resetData(_addSerieModalName);">Annuler</button>
 </jw-modal>
 
+<jw-modal id="{{_selectSerieModalName}}}" class="popup">
+    <h1 class="titre">{{_selectedSerie.titre}}</h1>
+    <div class="categorie">
+        Note
+    </div>
+    <div class="info">
+        {{_selectedSerie.note}}
+    </div>
+    <button class="boutton" *ngIf="_isMarking==false" (click)="_isMarking=true">
+        Noter
+    </button>
+    <div *ngIf="_isMarking==true">
+        <input type="number" #scoreinput />
+        <button (click)="addScore(scoreinput.value)">
+            <span >
+                &#10003;
+            </span>
+        </button>
+        <button (click)="_isMarking=false">
+            <span >
+                &#10008;
+            </span>
+        </button>
+    </div>
+
+
+    <div class="categorie">
+        Titre
+    </div>
+    <div class="info">
+        {{_selectedSerie.titre}}
+    </div>
+
+    <div class="categorie">
+        Type
+    </div>
+    <div class="info">
+        {{_selectedSerie.type}}
+    </div>
+
+    <div class="categorie">
+        Langue
+    </div>
+    <div class="info">
+        {{_selectedSerie.langue}}
+    </div>
+
+    <div class="categorie">
+        Date de sortie
+    </div>
+    <div class="info">
+        {{_selectedSerie.dateSortie}}
+    </div>
+
+    <div class="categorie">
+        Realisateur
+    </div>
+    <div class="info">
+        {{_selectedSerie.realisateur}}
+    </div>
+
+    <div class="categorie">
+        Societe de Production
+    </div>
+    <div class="info">
+        {{_selectedSerie.societeProduction}}
+    </div>
+
+    <div class="categorie">
+        Genre
+    </div>
+    <div class="info">
+        {{_selectedSerie.genre}}
+    </div>
+
+    <div class="categorie">
+        Theme
+    </div>
+    <div class="info">
+        {{_selectedSerie.theme}}
+    </div>
+
+    <div class="categorie">
+        Nombre d'episode
+    </div>
+    <div class="info">
+        {{_selectedSerie.nbEpisode}}
+    </div>
+
+    <div class="categorie">
+        Resume
+    </div>
+    <div class="info">
+        {{_selectedSerie.resume}}
+    </div>
+
+    <button (click)="resetData(_selectSerieModalName);">Annuler</button>
+</jw-modal>

@@ -1,9 +1,13 @@
 
 <div class="presentation">
     Liste des musiques:
-    <button class="boutton" (click)="ajoutMusiqueModal('addMusiqueModal')">
-        Ajouter une musique
+    <button class="boutton" *ngIf="_isSettingPassword == false" (click)="_isSettingPassword = true">        Ajouter une musique
     </button>
+    <div *ngIf="_isSettingPassword">
+        <input  type="text" #password />
+        <button (click)="openModal(_addMusiqueModalName, password.value)"><span>&#10003;</span></button>
+        <button (click)="_isSettingPassword = false"><span>&#10008;</span></button>
+    </div>
 </div>
 
 <table class="tableau">
@@ -33,7 +37,7 @@
                 Note
         </td>
     </tr>
-        <tr *ngFor="let musique of _musicList">
+        <tr *ngFor="let musique of _musiqueList" (click)="selectMusique(_selectMusiqueModalName,musique)">
             <td class="colonne ecriture">
                 {{musique.titre}}
             </td>
@@ -62,7 +66,7 @@
         </tr>
 </table>
 
-<jw-modal id="addMusiqueModal">
+<jw-modal id="{{_addMusiqueModalName}}" class="popup">
     <h1>Ajout d'une musique</h1>
     titre: <input type="text" [(ngModel)]="_newMusique.titre"/><br>
     langue: <input type="text" [(ngModel)]="_newMusique.langue"/><br>
@@ -74,5 +78,104 @@
     producteur: <input type="text" [(ngModel)]="_newMusique.producteur"/><br>
     parole: <input type="text" [(ngModel)]="_newMusique.paroles"/><br>
     <button (click)="addAnime()">Valider</button>
-    <button (click)="resetData('addMusiqueModal');">Annuler</button>
+    <button (click)="resetData(_addMusiqueModalName);">Annuler</button>
+</jw-modal>
+
+<jw-modal id="{{_selectMusiqueModalName}}}" class="popup">
+    <h1 class="titre">{{_selectedMusique.titre}}</h1>
+    <div class="categorie">
+        Note
+    </div>
+    <div class="info">
+        {{_selectedMusique.note}}
+    </div>
+    <button class="boutton" *ngIf="_isMarking==false" (click)="_isMarking=true">
+        Noter
+    </button>
+    <div *ngIf="_isMarking==true">
+        <input type="number" #scoreinput />
+        <button (click)="addScore(scoreinput.value)">
+            <span >
+                &#10003;
+            </span>
+        </button>
+        <button (click)="_isMarking=false">
+            <span >
+                &#10008;
+            </span>
+        </button>
+    </div>
+
+
+    <div class="categorie">
+        Titre
+    </div>
+    <div class="info">
+        {{_selectedMusique.titre}}
+    </div>
+
+    <div class="categorie">
+        Type
+    </div>
+    <div class="info">
+        {{_selectedMusique.type}}
+    </div>
+
+    <div class="categorie">
+        Langue
+    </div>
+    <div class="info">
+        {{_selectedMusique.langue}}
+    </div>
+
+    <div class="categorie">
+        Date de sortie
+    </div>
+    <div class="info">
+        {{_selectedMusique.dateSortie}}
+    </div>
+
+    <div class="categorie">
+        Interpretre
+    </div>
+    <div class="info">
+        {{_selectedMusique.interprete}}
+    </div>
+
+    <div class="categorie">
+        Album
+    </div>
+    <div class="info">
+        {{_selectedMusique.album}}
+    </div>
+
+    <div class="categorie">
+        Genre
+    </div>
+    <div class="info">
+        {{_selectedMusique.genre}}
+    </div>
+
+    <div class="categorie">
+        Producteur
+    </div>
+    <div class="info">
+        {{_selectedMusique.producteur}}
+    </div>
+
+    <div class="categorie">
+        Nombre d'episode
+    </div>
+    <div class="info">
+        {{_selectedMusique.duree}}
+    </div>
+
+    <div class="categorie">
+        Duree
+    </div>
+    <div class="info">
+        {{_selectedMusique.paroles}}
+    </div>
+
+    <button (click)="resetData(_selectMusiqueModalName);">Annuler</button>
 </jw-modal>

@@ -6,7 +6,7 @@ nav.menu ul li.boutton{
 
 nav.menu ul li.boutton a{
     color: red;
-    background-color: black;
+    background-color: dodgerblue;
     text-decoration: none;
     text-align:center ;
     display: flex;
@@ -15,7 +15,7 @@ nav.menu ul li.boutton a{
 }
 
 nav.menu ul li.boutton:hover a{
-    color: black;
-    background-color: red;
+    color: red;
+    background-color: olivedrab;
     transition: 0.5s all;
 }

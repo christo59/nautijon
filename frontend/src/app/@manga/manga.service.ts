@@ -1,7 +1,8 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Manga} from "./beans/Manga";
+import {Anime} from "../@anime/beans/Anime";
 
 @Injectable()
 export class MangaService {
@@ -17,4 +18,8 @@ export class MangaService {
         return this._http.post<Manga>("/manga/add",manga)
     }
 
+    public addScoreManga(score:string, manga: Manga): Observable<number>{
+        const headers = new HttpHeaders().set("score",score);
+        return this._http.post<number>("/manga/score/add",manga,{headers});
+    }
 }

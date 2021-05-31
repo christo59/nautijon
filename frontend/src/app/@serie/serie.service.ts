@@ -1,7 +1,9 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Serie} from "./beans/Serie";
+import {Anime} from "../@anime/beans/Anime";
+import {Musique} from "../@musique/beans/Musique";
 
 @Injectable()
 export class SerieService {
@@ -15,6 +17,10 @@ export class SerieService {
 
     public addSerie(serie: Serie): Observable<Serie>{
         return this._http.post<Serie>("/serie/add",serie)
+    }
+    public addScoreSerie(score:string, serie: Serie): Observable<number>{
+        const headers = new HttpHeaders().set("score",score);
+        return this._http.post<number>("/serie/score/add",serie,{headers});
     }
 
 }

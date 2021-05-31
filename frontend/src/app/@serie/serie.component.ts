@@ -2,6 +2,7 @@ import {Component,OnInit} from "@angular/core";
 import {Serie} from "./beans/Serie";
 import {SerieService} from "./serie.service";
 import {ModalService} from "../@modal/modal.service";
+import {Anime} from "../@anime/beans/Anime";
 
 @Component({
     selector: 'musique',
@@ -12,6 +13,12 @@ export class SerieComponent {
 
     private _serieList: Serie[] = [];
     private _newSerie:Serie = new Serie();
+    private _selectedSerie:Serie = new Serie();
+    private _isSettingPassword:boolean = false;
+    private _isMarking:boolean = false;
+
+    private _selectSerieModalName: string = "selectSerieModal";
+    private _addSerieModalName: string = "addSerieModal";
 
     constructor(private _serieService: SerieService,
                 private _modalService: ModalService) {}
@@ -22,8 +29,11 @@ export class SerieComponent {
         )
     }
 
-    ajoutSerieModal(modal):void {
-        this._modalService.open(modal);
+    openModal(modal: string, password?:string):void {
+        if( password == "abc" || password == undefined){
+            this._modalService.open(modal);
+            this._isSettingPassword = false;
+        }
     }
 
     resetData(modal):void {
@@ -37,9 +47,24 @@ export class SerieComponent {
         this._serieService.addSerie(this._newSerie).subscribe(
             res => {
                 this._serieList.push(res);
-                this.resetData("addSerieModal");
+                this.resetData(this._addSerieModalName);
             }
         )
+    }
+    selectSerie(modal:string, serie:Serie ):void {
+        this._modalService.open(modal);
+        this._selectedSerie = serie;
+    }
+
+    addScore(score:string): void {
+        if (!isNaN(Number(score))) {
+            this._serieService.addScoreSerie(score, this._selectedSerie).subscribe(
+                res => {
+                    this._serieList.find(serie => this._selectedSerie === serie).note = res;
+                    this._isMarking = false;
+                }
+            );
+        }
     }
 
 }

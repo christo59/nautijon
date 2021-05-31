@@ -1,8 +1,13 @@
 <div class="presentation">
     Liste des mangas:
-    <button class="boutton" (click)="ajoutMangaModal('addMangaModal')">
+    <button class="boutton" *ngIf="_isSettingPassword == false" (click)="_isSettingPassword = true">
         Ajouter un manga
     </button>
+    <div *ngIf="_isSettingPassword">
+        <input  type="text" #password />
+        <button (click)="openModal(_addMangaModalName, password.value)"><span>&#10003;</span></button>
+        <button (click)="_isSettingPassword = false"><span>&#10008;</span></button>
+    </div>
 </div>
 
 
@@ -33,7 +38,7 @@
                 Note
         </td>
     </tr>
-        <tr *ngFor="let manga of _mangaList">
+        <tr *ngFor="let manga of _mangaList" (click)="selectManga(_selectMangaModalName,manga)">
             <td class="colonne ecriture">
                 {{manga.titre}}
             </td>
@@ -63,7 +68,7 @@
 </table>
 
 
-<jw-modal id="addMangaModal">
+<jw-modal id="{{_addMangaModalName}}" class="popup">
     <h1>Ajout d'un manga</h1>
     titre: <input type="text" [(ngModel)]="_newManga.titre"/><br>
     langue: <input type="text" [(ngModel)]="_newManga.langue"/><br>
@@ -75,6 +80,97 @@
     theme: <input type="text" [(ngModel)]="_newManga.theme"/><br>
     resume: <input type="text" [(ngModel)]="_newManga.resume"/><br>
     <button (click)="addManga()">Valider</button>
-    <button (click)="resetData('addMangaModal');">Annuler</button>
+    <button (click)="resetData(_addMangaModalName);">Annuler</button>
 </jw-modal>
 
+<jw-modal id="{{_selectMangaModalName}}}" class="popup">
+    <h1 class="titre">{{_selectedManga.titre}}</h1>
+    <div class="categorie">
+        Note
+    </div>
+    <div class="info">
+        {{_selectedManga.note}}
+    </div>
+    <button class="boutton" *ngIf="_isMarking==false" (click)="_isMarking=true">
+        Noter
+    </button>
+    <div *ngIf="_isMarking==true">
+        <input type="number" #scoreinput />
+        <button (click)="addScore(scoreinput.value)">
+            <span >
+                &#10003;
+            </span>
+        </button>
+        <button (click)="_isMarking=false">
+            <span >
+                &#10008;
+            </span>
+        </button>
+    </div>
+
+
+    <div class="categorie">
+        Titre
+    </div>
+    <div class="info">
+        {{_selectedManga.titre}}
+    </div>
+
+    <div class="categorie">
+        Type
+    </div>
+    <div class="info">
+        {{_selectedManga.type}}
+    </div>
+
+    <div class="categorie">
+        Langue
+    </div>
+    <div class="info">
+        {{_selectedManga.langue}}
+    </div>
+
+    <div class="categorie">
+        Date de sortie
+    </div>
+    <div class="info">
+        {{_selectedManga.dateSortie}}
+    </div>
+
+    <div class="categorie">
+        Editeur
+    </div>
+    <div class="info">
+        {{_selectedManga.editeur}}
+    </div>
+
+    <div class="categorie">
+        Genre
+    </div>
+    <div class="info">
+        {{_selectedManga.genre}}
+    </div>
+
+    <div class="categorie">
+        Theme
+    </div>
+    <div class="info">
+        {{_selectedManga.theme}}
+    </div>
+
+    <div class="categorie">
+        Nombre de chapitre
+    </div>
+    <div class="info">
+        {{_selectedManga.nbChapitre}}
+    </div>
+
+    <div class="categorie">
+        Resume
+    </div>
+    <div class="info">
+        {{_selectedManga.resume}}
+    </div>
+
+    <button (click)="resetData(_selectMangaModalName);">Annuler</button>
+</jw-modal>

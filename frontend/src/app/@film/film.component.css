@@ -1,5 +1,5 @@
 .titre{
-    font-size: 150%;
+    font-size: 160%;
     color: red;
     text-align: center;
 }
@@ -21,13 +21,13 @@
     color: darkgreen;
     text-align: center;
 }
-.ajout .boutton{
+.boutton{
     display: inline-block;
     list-style-type: none;
     width: 14%;
 }
 
-.ajout .boutton a{
+.boutton a{
     color: blue;
     background-color: brown;
     text-decoration: none;
@@ -37,17 +37,17 @@
     justify-content: center;
 }
 
-.ajout boutton:hover a{
+.boutton:hover a{
     color: brown;
     background-color: blue;
     transition: 0.5s all;
 }
 .categorie{
-    font-size: 100%;
+    font-size: 140%;
     color: #0074D9;
     text-align: center;
 }
 .info {
-    font-size: 70%;
+    font-size: 120%;
     text-align: center;
 }

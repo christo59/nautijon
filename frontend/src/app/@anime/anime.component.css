@@ -31,7 +31,7 @@
     color: blue;
     background-color: brown;
     text-decoration: none;
-    text-align:right;
+    text-align:center;
     display: flex;
     font-size:35px;
     justify-content: center;
@@ -43,11 +43,15 @@ boutton:hover a{
     transition: 0.5s all;
 }
 .categorie{
-    font-size: 100%;
+    font-size: 140%;
     color: #0074D9;
     text-align: center;
 }
 .info {
-    font-size: 70%;
+    font-size: 120%;
     text-align: center;
+}
+
+.popup{
+    background-color: darkgreen;
 }

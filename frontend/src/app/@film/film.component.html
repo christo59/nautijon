@@ -1,9 +1,14 @@
 
 <div class="presentation">
     Liste des films:
-    <button class="boutton" (click)="ajoutFilmModal('addFilmModal')">
+    <button class="boutton" *ngIf="_isSettingPassword == false" (click)="_isSettingPassword = true">
         Ajouter un film
     </button>
+    <div *ngIf="_isSettingPassword">
+        <input  type="text" #password />
+        <button (click)="openModal(_addFilmModalName, password.value)"><span>&#10003;</span></button>
+        <button (click)="_isSettingPassword = false"><span>&#10008;</span></button>
+    </div>
 </div>
 
 <table class="tableau">
@@ -32,7 +37,7 @@
         <td class="titre colonne" >
                 Note
         </td>
-        <tr *ngFor="let film of _filmList" (click)="selectFilm('selectedFilmModal',film)">
+        <tr *ngFor="let film of _filmList" (click)="selectFilm(_selectFilmModalName,film)">
             <td class="colonne ecriture">
                 {{film.titre}}
             </td>
@@ -61,7 +66,7 @@
         </tr>
 </table>
 
-<jw-modal id="addFilmModal">
+<jw-modal id="{{_addFilmModalName}}" class="popup">
     <h1>Ajout d'un film</h1>
             titre: <input type="text" [(ngModel)]="_newFilm.titre"/><br>
             langue: <input type="text" [(ngModel)]="_newFilm.langue"/><br>
@@ -77,8 +82,32 @@
     <button (click)="resetData('addFilmModal');">Annuler</button>
 </jw-modal>
 
-<jw-modal id="selectedFilmModal">
+<jw-modal id="{{_selectFilmModalName}}}" class="popup">
     <h1 class="titre">{{_selectedFilm.titre}}</h1>
+
+    <div class="categorie">
+        Note
+    </div>
+    <div class="info">
+        {{_selectedFilm.note}}
+    </div>
+    <button class="boutton" *ngIf="_isMarking==false" (click)="_isMarking=true">
+        Noter
+    </button>
+    <div *ngIf="_isMarking==true">
+        <input type="number" #scoreinput />
+        <button (click)="addScore(scoreinput.value)">
+            <span >
+                &#10003;
+            </span>
+        </button>
+        <button (click)="_isMarking=false">
+            <span >
+                &#10008;
+            </span>
+        </button>
+    </div>
+
     <div class="categorie">
         Titre
     </div>
@@ -149,5 +178,5 @@
         {{_selectedFilm.resume}}
     </div>
 
-    <button (click)="resetData('addFilmModal');">Annuler</button>
+    <button (click)="resetData(_selectFilmModalName);">Annuler</button>
 </jw-modal>
