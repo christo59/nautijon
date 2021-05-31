@@ -16,6 +16,7 @@ export class SerieComponent {
     private _selectedSerie:Serie = new Serie();
     private _isSettingPassword:boolean = false;
     private _isMarking:boolean = false;
+    private _isFiltering:boolean = false;
 
     private _selectSerieModalName: string = "selectSerieModal";
     private _addSerieModalName: string = "addSerieModal";
@@ -65,6 +66,29 @@ export class SerieComponent {
                 }
             );
         }
+    }
+
+    orderBy(type:string): void {
+        this._serieList.sort((a,b) => {
+            if(isNaN(a[type])) {
+                return a[type].toLowerCase() < b[type].toLowerCase() ? 1:-1
+            } else {
+                return Number(a[type]) < Number(b[type]) ? 1:-1
+            }
+        });
+    }
+
+    filterBy(type:string, contain:string) : void {
+        this._serieList = this._serieList.filter( anime => anime[type].includes(contain.toLowerCase()))
+    }
+
+    resetFilter():void {
+        this._serieService.getSerieList().subscribe(
+            res => {
+                this._serieList = res;
+                this._isFiltering = false;
+            }
+        )
     }
 
 }

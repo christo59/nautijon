@@ -16,6 +16,7 @@ export class MangaComponent {
     private _selectedManga:Manga = new Manga();
     private _isSettingPassword:boolean = false;
     private _isMarking:boolean = false;
+    private _isFiltering:boolean = false;
 
     private _selectMangaModalName: string = "selectMangaModal";
     private _addMangaModalName: string = "addMangaModal";
@@ -47,7 +48,7 @@ export class MangaComponent {
         this._mangaService.addManga(this._newManga ).subscribe(
             res => {
                 this._mangaList.push(res);
-                this.resetData("addMangaModal");
+                this.resetData(this._addMangaModalName);
             }
         )
     }
@@ -66,5 +67,28 @@ export class MangaComponent {
                 }
             );
         }
+    }
+
+    orderBy(type:string): void {
+        this._mangaList.sort((a,b) => {
+            if(isNaN(a[type])) {
+                return a[type].toLowerCase() < b[type].toLowerCase() ? 1:-1
+            } else {
+                return Number(a[type]) < Number(b[type]) ? 1:-1
+            }
+        });
+    }
+
+    filterBy(type:string, contain:string) : void {
+        this._mangaList = this._mangaList.filter( anime => anime[type].includes(contain.toLowerCase()))
+    }
+
+    resetFilter():void {
+        this._mangaService.getMangaList().subscribe(
+            res => {
+                this._mangaList = res;
+                this._isFiltering = false;
+            }
+        )
     }
 }

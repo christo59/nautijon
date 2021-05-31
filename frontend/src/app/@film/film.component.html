@@ -1,6 +1,8 @@
 
 <div class="presentation">
     Liste des films:
+    <button class="boutton" *ngIf="_isFiltering == false" (click)="_isFiltering = true">Filtrer</button>
+    <button class="boutton" *ngIf="_isFiltering == true" (click)="resetFilter()">Annuler les filtres</button>
     <button class="boutton" *ngIf="_isSettingPassword == false" (click)="_isSettingPassword = true">
         Ajouter un film
     </button>
@@ -13,28 +15,28 @@
 
 <table class="tableau">
     <tr>
-        <td class="titre colonne" >
-                TITRE
+        <td class="titre colonne" (click)="orderBy('titre')">
+                TITRE <div *ngIf="_isFiltering == true"><input type="text" #titreFilter placeholder="Contient..."/><button (click)="filterBy('titre', titreFilter.value)"><span>&#10003;</span></button></div>
         </td>
-        <td class="titre colonne" >
-                Type
+        <td class="titre colonne" (click)="orderBy('type')">
+                Type <div *ngIf="_isFiltering == true"><input type="text" #typeFilter placeholder="Contient..."/><button (click)="filterBy('type', typeFilter.value)"><span>&#10003;</span></button></div>
         </td >
-        <td class="titre colonne" >
-                Genre
+        <td class="titre colonne" (click)="orderBy('genre')">
+                Genre <div *ngIf="_isFiltering == true"><input type="text" #genreFilter placeholder="Contient..."/><button (click)="filterBy('genre', genreFilter.value)"><span>&#10003;</span></button></div>
         </td>
-        <td class="titre colonne" >
+        <td class="titre colonne" (click)="orderBy('duree')">
                 Duree
         </td>
-        <td class="titre colonne" >
+        <td class="titre colonne" (click)="orderBy('dateSortie')">
                 Date de sortie
         </td>
-        <td class="titre colonne" >
-                Theme
+        <td class="titre colonne" (click)="orderBy('theme')">
+                Theme <div *ngIf="_isFiltering == true"><input type="text" #themeFilter placeholder="Contient..."/><button (click)="filterBy('theme', themeFilter.value)"><span>&#10003;</span></button></div>
         </td>
-        <td class="titre colonne" >
+        <td class="titre colonne" (click)="orderBy('langue')">
                 Language
         </td>
-        <td class="titre colonne" >
+        <td class="titre colonne" (click)="orderBy('note')">
                 Note
         </td>
         <tr *ngFor="let film of _filmList" (click)="selectFilm(_selectFilmModalName,film)">
@@ -66,7 +68,7 @@
         </tr>
 </table><br/>
 
-<jw-modal id="{{_addFilmModalName}}" class="popup">
+<jw-modal id="{{_addFilmModalName}}" >
     <h1>Ajout d'un film</h1>
             titre: <input type="text" [(ngModel)]="_newFilm.titre"/><br>
             langue: <input type="text" [(ngModel)]="_newFilm.langue"/><br>
@@ -82,7 +84,7 @@
     <button (click)="resetData('addFilmModal');">Annuler</button>
 </jw-modal>
 
-<jw-modal id="{{_selectFilmModalName}}" class="popup">
+<jw-modal id="{{_selectFilmModalName}}" >
     <h1 class="titre">{{_selectedFilm.titre}}</h1>
 
     <div class="categorie">
@@ -90,22 +92,22 @@
     </div>
     <div class="info">
         {{_selectedFilm.note}}
-    </div>
-    <button class="boutton" *ngIf="_isMarking==false" (click)="_isMarking=true">
+    <button class="boutton" *ngIf="_isMarking==false" (click)="_isMarking=true" >
         Noter
     </button>
-    <div *ngIf="_isMarking==true">
+    <div *ngIf="_isMarking==true" class="boutton">
         <input type="number" #scoreinput />
         <button (click)="addScore(scoreinput.value)">
             <span >
                 &#10003;
             </span>
         </button>
-        <button (click)="_isMarking=false">
+        <button (click)="_isMarking=false" class="boutton">
             <span >
                 &#10008;
             </span>
         </button>
+    </div>
     </div>
 
     <div class="categorie">
@@ -178,5 +180,5 @@
         {{_selectedFilm.resume}}
     </div>
 
-    <button (click)="resetData(_selectFilmModalName);">Annuler</button>
+    <button (click)="resetData(_selectFilmModalName); " class="boutton">Annuler</button>
 </jw-modal>

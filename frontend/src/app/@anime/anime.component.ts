@@ -15,6 +15,7 @@ export class AnimeComponent {
     private _selectedAnime:Anime = new Anime();
     private _isSettingPassword:boolean = false;
     private _isMarking:boolean = false;
+    private _isFiltering:boolean = false;
 
     private _selectAnimeModalName: string = "selectAnimeModal";
     private _addAnimeModalName: string = "addAnimeModal";
@@ -67,6 +68,29 @@ export class AnimeComponent {
                 }
             );
         }
+    }
+
+    orderBy(type:string): void {
+        this._animeList.sort((a,b) => {
+            if(isNaN(a[type])) {
+                return a[type].toLowerCase() < b[type].toLowerCase() ? 1:-1
+            } else {
+                return Number(a[type]) < Number(b[type]) ? 1:-1
+            }
+        });
+    }
+
+    filterBy(type:string, contain:string) : void {
+        this._animeList = this._animeList.filter( anime => anime[type].includes(contain.toLowerCase()))
+    }
+
+    resetFilter():void {
+        this._animeService.getAnimeList().subscribe(
+            res => {
+                this._animeList = res;
+                this._isFiltering = false;
+            }
+        )
     }
 
 }

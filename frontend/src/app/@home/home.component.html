@@ -1,7 +1,7 @@
 
 <div class="presentation">
     TOP 10 des loisir :
-</div>
+</div><br/>
 <table class="tableau" >
     <tr>
         <td class="colonne">
@@ -29,8 +29,8 @@
                 TOP Manga
             </div>
             <div class="ecriture"  *ngFor="let manga of _mangaList.slice(0,10)" >
-                {{manga.titre}}
-                {{manga.note}}
+                {{manga.titre  }}
+                {{  manga.note}}
             </div>
         </td>
         <td class="colonne">
@@ -64,3 +64,4 @@
         </td>
     </tr>
 </table>
+<br/><br/>

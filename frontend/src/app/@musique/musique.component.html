@@ -1,6 +1,9 @@
 
 <div class="presentation">
     Liste des musiques:
+    <button class="boutton" *ngIf="_isFiltering == false" (click)="_isFiltering = true">Filtrer</button>
+    <button class="boutton" *ngIf="_isFiltering == true" (click)="resetFilter()">Annuler les filtres</button>
+
     <button class="boutton" *ngIf="_isSettingPassword == false" (click)="_isSettingPassword = true">        Ajouter une musique
     </button>
     <div *ngIf="_isSettingPassword">
@@ -12,28 +15,28 @@
 
 <table class="tableau">
     <tr>
-        <td class="titre colonne" >
-                TITRE
+        <td class="titre colonne" (click)="orderBy('titre')">
+                TITRE <div *ngIf="_isFiltering == true"><input type="text" #titreFilter placeholder="Contient..."/><button (click)="filterBy('titre', titreFilter.value)"><span>&#10003;</span></button></div>
         </td>
-        <td class="titre colonne" >
-                Album
+        <td class="titre colonne" (click)="orderBy('album')">
+                Album <div *ngIf="_isFiltering == true"><input type="text" #albumFilter placeholder="Contient..."/><button (click)="filterBy('album', albumFilter.value)"><span>&#10003;</span></button></div>
         </td>
-        <td class="titre colonne" >
-                Interpretre
+        <td class="titre colonne" (click)="orderBy('interprete')">
+                Interpretre <div *ngIf="_isFiltering == true"><input type="text" #interpreteFilter placeholder="Contient..."/><button (click)="filterBy('interprete', interpreteFilter.value)"><span>&#10003;</span></button></div>
         </td>
-        <td class="titre colonne" >
+        <td class="titre colonne" (click)="orderBy('duree')">
                 Duree
         </td>
-        <td class="titre colonne" >
+        <td class="titre colonne" (click)="orderBy('dateSortie')">
                 Date de sortie
         </td>
-        <td class="titre colonne" >
-                Genre
+        <td class="titre colonne" (click)="orderBy('genre')">
+                Genre <div *ngIf="_isFiltering == true"><input type="text" #genreFilter placeholder="Contient..."/><button (click)="filterBy('genre', genreFilter.value)"><span>&#10003;</span></button></div>
         </td>
-        <td class="titre colonne" >
+        <td class="titre colonne" (click)="orderBy('langue')">
                 Language
         </td>
-        <td class="titre colonne" >
+        <td class="titre colonne" (click)="orderBy('note')">
                 Note
         </td>
     </tr>
@@ -66,7 +69,7 @@
         </tr>
 </table><br/>
 
-<jw-modal id="{{_addMusiqueModalName}}" class="popup">
+<jw-modal id="{{_addMusiqueModalName}}">
     <h1>Ajout d'une musique</h1>
     titre: <input type="text" [(ngModel)]="_newMusique.titre"/><br>
     langue: <input type="text" [(ngModel)]="_newMusique.langue"/><br>
@@ -77,34 +80,33 @@
     duree: <input type="text" [(ngModel)]="_newMusique.duree"/><br>
     producteur: <input type="text" [(ngModel)]="_newMusique.producteur"/><br>
     parole: <input type="text" [(ngModel)]="_newMusique.paroles"/><br>
-    <button (click)="addAnime()">Valider</button>
+    <button (click)="addMusique()">Valider</button>
     <button (click)="resetData(_addMusiqueModalName);">Annuler</button>
 </jw-modal>
 
-<jw-modal id="{{_selectMusiqueModalName}}" class="popup">
+<jw-modal id="{{_selectMusiqueModalName}}">
     <h1 class="titre">{{_selectedMusique.titre}}</h1>
     <div class="categorie">
         Note
     </div>
     <div class="info">
         {{_selectedMusique.note}}
-    </div>
-    <button class="boutton" *ngIf="_isMarking==false" (click)="_isMarking=true">
+    <button class="boutton" *ngIf="_isMarking==false" (click)="_isMarking=true" >
         Noter
     </button>
     <div *ngIf="_isMarking==true">
         <input type="number" #scoreinput />
-        <button (click)="addScore(scoreinput.value)">
+        <button (click)="addScore(scoreinput.value)" class="boutton">
             <span >
                 &#10003;
             </span>
         </button>
-        <button (click)="_isMarking=false">
+        <button (click)="_isMarking=false" class="boutton">
             <span >
                 &#10008;
             </span>
         </button>
-    </div>
+    </div></div>
 
 
     <div class="categorie">
@@ -170,5 +172,5 @@
         {{_selectedMusique.paroles}}
     </div>
 
-    <button (click)="resetData(_selectMusiqueModalName);">Annuler</button>
+    <button (click)="resetData(_selectMusiqueModalName);" class="boutton">Annuler</button>
 </jw-modal>

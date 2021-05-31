@@ -37,22 +37,22 @@ export class HomeComponent {
 
     ngOnInit(): void {
         this._animeService.getAnimeList().subscribe(
-            res => this._animeList = res.sort((a,b) => a.note > b.note? 1:-1)
+            res => this._animeList = res.sort((a,b) => a.note < b.note? 1:-1)
         );
         this._filmService.getFilmList().subscribe(
-            res => this._filmList = res.sort((a,b) => a.note > b.note? 1:-1)
+            res => this._filmList = res.sort((a,b) => a.note < b.note? 1:-1)
         );
         this._jeuVideoService.getVideoGameList().subscribe(
-            res => this._videoGameList = res.sort((a,b) => a.note > b.note? 1:-1)
+            res => this._videoGameList = res.sort((a,b) => a.note < b.note? 1:-1)
         );
         this._mangaService.getMangaList().subscribe(
-            res => this._mangaList = res.sort((a,b) => a.note > b.note? 1:-1)
+            res => this._mangaList = res.sort((a,b) => a.note < b.note? 1:-1)
         );
         this._musiqueService.getMusicList().subscribe(
-            res => this._musicList = res.sort((a,b) => a.note > b.note? 1:-1)
+            res => this._musicList = res.sort((a,b) => a.note < b.note? 1:-1)
         );
         this._serieService.getSerieList().subscribe(
-            res => this._serieList = res.sort((a,b) => a.note > b.note? 1:-1)
+            res => this._serieList = res.sort((a,b) => a.note < b.note? 1:-1)
         );
     }
 }

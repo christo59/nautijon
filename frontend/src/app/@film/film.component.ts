@@ -16,6 +16,7 @@ export class FilmComponent {
     private _selectedFilm:Film = new Film();
     private _isSettingPassword:boolean = false;
     private _isMarking:boolean = false;
+    private _isFiltering:boolean = false;
 
     private _selectFilmModalName: string = "selectFilmModal";
     private _addFilmModalName: string = "addFilmModal";
@@ -48,7 +49,7 @@ export class FilmComponent {
         this._filmService.addFilm(this._newFilm).subscribe(
             res => {
                 this._filmList.push(res);
-                this.resetData("addFilmModal");
+                this.resetData(this._addFilmModalName);
             }
         )
     }
@@ -66,5 +67,29 @@ export class FilmComponent {
             );
         }
     }
+
+    orderBy(type:string): void {
+        this._filmList.sort((a,b) => {
+            if(isNaN(a[type])) {
+                return a[type].toLowerCase() < b[type].toLowerCase() ? 1:-1
+            } else {
+                return Number(a[type]) < Number(b[type]) ? 1:-1
+            }
+        });
+    }
+
+    filterBy(type:string, contain:string) : void {
+        this._filmList = this._filmList.filter( anime => anime[type].includes(contain.toLowerCase()))
+    }
+
+    resetFilter():void {
+        this._filmService.getFilmList().subscribe(
+            res => {
+                this._filmList = res;
+                this._isFiltering = false;
+            }
+        )
+    }
+
 
 }

@@ -1,5 +1,7 @@
 <div class="presentation">
     Liste des mangas:
+    <button class="boutton" *ngIf="_isFiltering == false" (click)="_isFiltering = true">Filtrer</button>
+    <button class="boutton" *ngIf="_isFiltering == true" (click)="resetFilter()">Annuler les filtres</button>
     <button class="boutton" *ngIf="_isSettingPassword == false" (click)="_isSettingPassword = true">
         Ajouter un manga
     </button>
@@ -13,28 +15,28 @@
 
 <table class="tableau">
     <tr>
-        <td class="titre colonne" >
-                TITRE
+        <td class="titre colonne" (click)="orderBy('titre')">
+                TITRE <div *ngIf="_isFiltering == true"><input type="text" #titreFilter placeholder="Contient..."/><button (click)="filterBy('titre', titreFilter.value)"><span>&#10003;</span></button></div>
         </td>
-        <td class="titre colonne" >
-                Type
+        <td class="titre colonne" (click)="orderBy('type')">
+                Type <div *ngIf="_isFiltering == true"><input type="text" #typeFilter placeholder="Contient..."/><button (click)="filterBy('type', typeFilter.value)"><span>&#10003;</span></button></div>
         </td>
-        <td class="titre colonne" >
-                Genre
+        <td class="titre colonne" (click)="orderBy('genre')">
+                Genre <div *ngIf="_isFiltering == true"><input type="text" #genreFilter placeholder="Contient..."/><button (click)="filterBy('genre', genreFilter.value)"><span>&#10003;</span></button></div>
         </td>
-        <td class="titre colonne" >
+        <td class="titre colonne" (click)="orderBy('nbChapitre')">
                 Nombre de chapitre
         </td>
-        <td class="titre colonne" >
+        <td class="titre colonne" (click)="orderBy('dateSortie')">
                 Date de sortie
         </td>
-        <td class="titre colonne" >
-                Theme
+        <td class="titre colonne" (click)="orderBy('theme')">
+                Theme <div *ngIf="_isFiltering == true"><input type="text" #themeFilter placeholder="Contient..."/><button (click)="filterBy('theme', themeFilter.value)"><span>&#10003;</span></button></div>
         </td>
-        <td class="titre colonne" >
+        <td class="titre colonne" (click)="orderBy('langue')">
                 Language
         </td>
-        <td class="titre colonne" >
+        <td class="titre colonne" (click)="orderBy('note')">
                 Note
         </td>
     </tr>
@@ -68,7 +70,7 @@
 </table><br/>
 
 
-<jw-modal id="{{_addMangaModalName}}" class="popup">
+<jw-modal id="{{_addMangaModalName}}" >
     <h1>Ajout d'un manga</h1>
     titre: <input type="text" [(ngModel)]="_newManga.titre"/><br>
     langue: <input type="text" [(ngModel)]="_newManga.langue"/><br>
@@ -83,30 +85,30 @@
     <button (click)="resetData(_addMangaModalName);">Annuler</button>
 </jw-modal>
 
-<jw-modal id="{{_selectMangaModalName}}" class="popup">
+<jw-modal id="{{_selectMangaModalName}}" >
     <h1 class="titre">{{_selectedManga.titre}}</h1>
     <div class="categorie">
         Note
     </div>
     <div class="info">
         {{_selectedManga.note}}
-    </div>
-    <button class="boutton" *ngIf="_isMarking==false" (click)="_isMarking=true">
+
+    <button class="boutton" *ngIf="_isMarking==false" (click)="_isMarking=true" >
         Noter
     </button>
     <div *ngIf="_isMarking==true">
         <input type="number" #scoreinput />
-        <button (click)="addScore(scoreinput.value)">
+        <button (click)="addScore(scoreinput.value)" class="boutton">
             <span >
                 &#10003;
             </span>
         </button>
-        <button (click)="_isMarking=false">
+        <button (click)="_isMarking=false" class="boutton">
             <span >
                 &#10008;
             </span>
         </button>
-    </div>
+    </div></div>
 
 
     <div class="categorie">
@@ -172,5 +174,5 @@
         {{_selectedManga.resume}}
     </div>
 
-    <button (click)="resetData(_selectMangaModalName);">Annuler</button>
+    <button (click)="resetData(_selectMangaModalName);" class="boutton">Annuler</button>
 </jw-modal>

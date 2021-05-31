@@ -1,5 +1,5 @@
 .titre{
-    font-size: 160%;
+    font-size: 220%;
     color: red;
     text-align: center;
 }
@@ -23,18 +23,17 @@
 }
 .boutton{
     color: red;
-    background-color: green;
+    background-color: lawngreen;
     text-align:center;
+    position: center;
+    font-size: 110%;
 }
 .categorie{
-    font-size: 140%;
+    font-size: 200%;
     color: #0074D9;
     text-align: center;
 }
 .info {
-    font-size: 120%;
+    font-size: 180%;
     text-align: center;
-}
-.popup{
-    background-color: darkgreen;
 }

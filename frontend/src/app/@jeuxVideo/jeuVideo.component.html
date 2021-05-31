@@ -1,6 +1,8 @@
 
 <div class="presentation">
     Liste des Jeux-videos:
+    <button class="boutton" *ngIf="_isFiltering == false" (click)="_isFiltering = true">Filtrer</button>
+    <button class="boutton" *ngIf="_isFiltering == true" (click)="resetFilter()">Annuler les filtres</button>
     <button class="boutton" *ngIf="_isSettingPassword == false" (click)="_isSettingPassword = true">
         Ajouter un JeuVideo
     </button>
@@ -14,30 +16,30 @@
 
 <table class="tableau">
     <tr>
-        <td class="titre colonne">
-                TITRE
+        <td class="titre colonne" (click)="orderBy('titre')">
+                TITRE <div *ngIf="_isFiltering == true"><input type="text" #titreFilter placeholder="Contient..."/><button (click)="filterBy('titre', titreFilter.value)"><span>&#10003;</span></button></div>
         </td>
-        <td class="titre colonne">
-                Type
+        <td class="titre colonne" (click)="orderBy('type')">
+                Type <div *ngIf="_isFiltering == true"><input type="text" #typeFilter placeholder="Contient..."/><button (click)="filterBy('type', typeFilter.value)"><span>&#10003;</span></button></div>
         </td>
-        <td class="titre colonne">
-                Genre
+        <td class="titre colonne" (click)="orderBy('genre')">
+                Genre <div *ngIf="_isFiltering == true"><input type="text" #genreFilter placeholder="Contient..."/><button (click)="filterBy('genre', genreFilter.value)"><span>&#10003;</span></button></div>
         </td>
-        <td class="titre colonne">
+        <td class="titre colonne" (click)="orderBy('dateSortie')">
                 Date de sortie
         </td>
-        <td class="titre colonne">
-                Theme
+        <td class="titre colonne" (click)="orderBy('theme')">
+                Theme <div *ngIf="_isFiltering == true"><input type="text" #themeFilter placeholder="Contient..."/><button (click)="filterBy('theme', themeFilter.value)"><span>&#10003;</span></button></div>
         </td>
-        <td class="titre colonne">
+        <td class="titre colonne" (click)="orderBy('langue')">
                 Language
         </td>
-        <td class="titre colonne">
+        <td class="titre colonne" (click)="orderBy('note')">
                 Note
         </td>
     </tr>
 
-        <tr *ngFor="let jeu of _JeuVideoList" (click)="selectJeuVideo(_selectJeuVideoModalName,jeu)">
+        <tr *ngFor="let jeu of _jeuVideoList" (click)="selectJeuVideo(_selectJeuVideoModalName,jeu)">
             <td class="colonne ecriture">
                 {{jeu.titre}}
             </td>
@@ -63,7 +65,7 @@
         </tr>
 </table><br/>
 
-<jw-modal id="{{_addJeuVideoModalName}}" class="popup">
+<jw-modal id="{{_addJeuVideoModalName}}" >
     <h1>Ajout d'un JeuVideo</h1>
     titre: <input type="text" [(ngModel)]="_newJeuVideo.titre"/><br>
     langue: <input type="text" [(ngModel)]="_newJeuVideo.langue"/><br>
@@ -78,7 +80,7 @@
     <button (click)="resetData(_addJeuVideoModalName);">Annuler</button>
 </jw-modal>
 
-<jw-modal id="{{_selectJeuVideoModalName}}" class="popup">
+<jw-modal id="{{_selectJeuVideoModalName}}" >
     <h1 class="titre">{{_selectedJeuVideo.titre}}</h1>
 
     <div class="categorie">
@@ -86,22 +88,22 @@
     </div>
     <div class="info">
         {{_selectedJeuVideo.note}}
-    </div>
-    <button class="boutton" *ngIf="_isMarking==false" (click)="_isMarking=true">
+    <button class="boutton" *ngIf="_isMarking==false" (click)="_isMarking=true" >
         Noter
     </button>
     <div *ngIf="_isMarking==true">
         <input type="number" #scoreinput />
-        <button (click)="addScore(scoreinput.value)">
+        <button (click)="addScore(scoreinput.value)" class="boutton">
             <span >
                 &#10003;
             </span>
         </button>
-        <button (click)="_isMarking=false">
+        <button (click)="_isMarking=false" class="boutton">
             <span >
                 &#10008;
             </span>
         </button>
+    </div>
     </div>
 
     <div class="categorie">
@@ -168,5 +170,5 @@
         {{_selectedJeuVideo.resume}}
     </div>
 
-    <button (click)="resetData(_selectJeuVideoModalName);">Annuler</button>
+    <button (click)="resetData(_selectJeuVideoModalName);" class="boutton">Annuler</button>
 </jw-modal>

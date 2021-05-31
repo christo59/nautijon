@@ -1,6 +1,8 @@
 
 <div class="presentation">
     Liste des animes:
+    <button class="boutton" *ngIf="_isFiltering == false" (click)="_isFiltering = true">Filtrer</button>
+    <button class="boutton" *ngIf="_isFiltering == true" (click)="resetFilter()">Annuler les filtres</button>
     <button class="boutton" *ngIf="_isSettingPassword == false" (click)="_isSettingPassword = true">
         Ajouter un anime
     </button>
@@ -9,32 +11,32 @@
         <button (click)="openModal(_addAnimeModalName, password.value)"><span>&#10003;</span></button>
         <button (click)="_isSettingPassword = false"><span>&#10008;</span></button>
     </div>
-</div>
-<br/>
+</div><br/>
+
 <table class="tableau">
     <tr>
-        <td class="titre colonne" >
-                TITRE
+        <td class="titre colonne" (click)="orderBy('titre')">
+                TITRE <div *ngIf="_isFiltering == true"><input type="text" #titreFilter placeholder="Contient..."/><button (click)="filterBy('titre', titreFilter.value)"><span>&#10003;</span></button></div>
         </td>
-        <td class="titre colonne" >
-                Type
+        <td class="titre colonne" (click)="orderBy('type')">
+                Type <div *ngIf="_isFiltering == true"><input type="text" #typeFilter placeholder="Contient..."/><button (click)="filterBy('type', typeFilter.value)"><span>&#10003;</span></button></div>
         </td>
-        <td class="titre colonne" >
-                Genre
+        <td class="titre colonne" (click)="orderBy('genre')">
+                Genre <div *ngIf="_isFiltering == true"><input type="text" #genreFilter placeholder="Contient..."/><button (click)="filterBy('genre', genreFilter.value)"><span>&#10003;</span></button></div>
         </td>
-        <td class="titre colonne" >
+        <td class="titre colonne" (click)="orderBy('nbEpisode')">
                 Nombre d'episode
         </td>
-        <td class="titre colonne">
+        <td class="titre colonne" (click)="orderBy('dateSortie')">
                 Date de sortie
         </td>
-        <td class="titre colonne" >
-                Theme
+        <td class="titre colonne" (click)="orderBy('theme')">
+                Theme <div *ngIf="_isFiltering == true"><input type="text" #themeFilter placeholder="Contient..."/><button (click)="filterBy('theme', themeFilter.value)"><span>&#10003;</span></button></div>
         </td>
-        <td class="titre colonne" >
+        <td class="titre colonne" (click)="orderBy('langue')">
                 Language
         </td>
-        <td class="titre colonne" >
+        <td class="titre colonne" (click)="orderBy('note')">
                 Note
         </td>
     </tr>
@@ -66,7 +68,7 @@
         </tr>
 </table><br/>
 
-<jw-modal id="{{_addAnimeModalName}}" class="popup">
+<jw-modal id="{{_addAnimeModalName}}">
     <h1>Ajout d'un anime</h1>
     titre: <input type="text" [(ngModel)]="_newAnime.titre"/><br>
     langue: <input type="text" [(ngModel)]="_newAnime.langue"/><br>
@@ -82,29 +84,29 @@
     <button (click)="resetData(_addAnimeModalName);">Annuler</button>
 </jw-modal>
 
-<jw-modal id="{{_selectAnimeModalName}}" class="popup">
+<jw-modal id="{{_selectAnimeModalName}}">
     <h1 class="titre">{{_selectedAnime.titre}}</h1>
     <div class="categorie">
         Note
     </div>
     <div class="info">
         {{_selectedAnime.note}}
-    </div>
-    <button class="boutton" *ngIf="_isMarking==false" (click)="_isMarking=true">
-        Noter
-    </button>
-    <div *ngIf="_isMarking==true">
-        <input type="number" #scoreinput />
-        <button (click)="addScore(scoreinput.value)" >
-            <span >
-                &#10003;
-            </span>
+        <button class="boutton" *ngIf="_isMarking==false" (click)="_isMarking=true" >
+            Noter
         </button>
-        <button (click)="_isMarking=false">
-            <span >
-                &#10008;
-            </span>
-        </button>
+        <div *ngIf="_isMarking==true">
+            <input type="number" #scoreinput />
+            <button (click)="addScore(scoreinput.value)" class="boutton">
+                <span >
+                    &#10003;
+                </span>
+            </button>
+            <button (click)="_isMarking=false" class="boutton">
+                <span >
+                    &#10008;
+                </span>
+            </button>
+        </div>
     </div>
 
 
@@ -178,6 +180,6 @@
         {{_selectedAnime.resume}}
     </div>
 
-    <button (click)="resetData(_selectAnimeModalName);">Annuler</button>
+    <button (click)="resetData(_selectAnimeModalName);" class="boutton">Annuler</button>
 </jw-modal>
 

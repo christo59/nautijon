@@ -14,7 +14,7 @@ public interface AnimeRepository extends PagingAndSortingRepository<Anime,Long> 
 
     @Query("MATCH (a:Anime {titre:{anime}.titre})\n" +
             "OPTIONAL MATCH (a)<-[:HAS_SCORE]-(s:Score)\n" +
-            "CREATE (a)<-[:HAS_SCORE]-(:Score {score:{score})\n" +
+            "CREATE (a)<-[:HAS_SCORE]-(:Score {score:{score}})\n" +
             "RETURN count(s)")
     Double addScore(@Param("score") Double score, @Param("anime") Anime anime);
 
