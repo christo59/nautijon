@@ -22,6 +22,9 @@ public class ThemeEndpoint {
 
     @PostMapping(value = "/musique/add")
     public ResponseEntity<Musique> addMusic(@RequestBody Musique musique) {
+        if(themeComponent.nodeExist(musique)){
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
         return new ResponseEntity<>(themeComponent.addMusic(musique), HttpStatus.CREATED);
     }
 
@@ -32,6 +35,10 @@ public class ThemeEndpoint {
 
     @PostMapping(value = "/jeuVideo/add")
     public ResponseEntity<JeuVideo> addVideoGame(@RequestBody JeuVideo jeuVideo) {
+
+        if(themeComponent.nodeExist(jeuVideo)){
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
         return new ResponseEntity<>(themeComponent.addVideoGame(jeuVideo), HttpStatus.CREATED);
     }
 
@@ -42,6 +49,9 @@ public class ThemeEndpoint {
 
     @PostMapping(value = "/manga/add")
     public ResponseEntity<Manga> addManga(@RequestBody Manga manga) {
+        if(themeComponent.nodeExist(manga)){
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
         return new ResponseEntity<>(themeComponent.addManga(manga), HttpStatus.CREATED);
     }
 
@@ -52,6 +62,9 @@ public class ThemeEndpoint {
 
     @PostMapping(value = "/anime/add")
     public ResponseEntity<Anime> addAnime(@RequestBody Anime anime) {
+        if(themeComponent.nodeExist(anime)){
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
         return new ResponseEntity<>(themeComponent.addAnime(anime), HttpStatus.CREATED);
     }
 
@@ -62,6 +75,9 @@ public class ThemeEndpoint {
 
     @PostMapping(value = "/serie/add")
     public ResponseEntity<Serie> addSerie(@RequestBody Serie serie) {
+        if(themeComponent.nodeExist(serie)){
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
         return new ResponseEntity<>(themeComponent.addSerie(serie), HttpStatus.CREATED);
     }
 
@@ -72,6 +88,9 @@ public class ThemeEndpoint {
 
     @PostMapping(value = "/film/add")
     public ResponseEntity<Film> addFilm(@RequestBody Film film) {
+        if(themeComponent.nodeExist(film)){
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
         return new ResponseEntity<>(themeComponent.addFilm(film), HttpStatus.CREATED);
     }
 

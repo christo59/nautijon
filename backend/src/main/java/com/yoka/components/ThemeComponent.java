@@ -106,4 +106,28 @@ public class ThemeComponent {
         return serieRepository.updateAverageScore((serie.getNote()+score)/nbOfScore, serie);
     }
 
+    public boolean nodeExist(Anime anime){
+        return this.animeRepository.animeExist(anime);
+    }
+
+    public boolean nodeExist(Film film){
+        return this.filmRepository.filmExist(film);
+    }
+
+    public boolean nodeExist(JeuVideo jeuVideo){
+        return this.jeuVideoRepository.jeuVideoExist(jeuVideo);
+    }
+
+    public boolean nodeExist(Manga manga){
+        return this.mangaRepository.mangaExist(manga);
+    }
+
+    public boolean nodeExist(Musique musique){
+        return this.musiqueRepository.musiqueExist(musique);
+    }
+
+    public boolean nodeExist(Serie serie){
+        return this.serieRepository.serieExist(serie);
+    }
+
 }
