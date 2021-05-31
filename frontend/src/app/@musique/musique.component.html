@@ -81,7 +81,7 @@
     <button (click)="resetData(_addMusiqueModalName);">Annuler</button>
 </jw-modal>
 
-<jw-modal id="{{_selectMusiqueModalName}}}" class="popup">
+<jw-modal id="{{_selectMusiqueModalName}}" class="popup">
     <h1 class="titre">{{_selectedMusique.titre}}</h1>
     <div class="categorie">
         Note
@@ -112,13 +112,6 @@
     </div>
     <div class="info">
         {{_selectedMusique.titre}}
-    </div>
-
-    <div class="categorie">
-        Type
-    </div>
-    <div class="info">
-        {{_selectedMusique.type}}
     </div>
 
     <div class="categorie">

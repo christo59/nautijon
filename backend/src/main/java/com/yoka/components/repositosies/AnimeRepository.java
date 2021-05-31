@@ -23,7 +23,7 @@ public interface AnimeRepository extends PagingAndSortingRepository<Anime,Long> 
             "RETURN {avgScore}")
     Double updateAverageScore(@Param("avgScore") Double avgScore, @Param("anime") Anime anime);
 
-    @Query("MATCH (a:Anime {titre:{anime].titre})\n +" +
+    @Query("MATCH (a:Anime {titre:{anime}.titre})\n" +
             "return count(a) > 0")
     boolean animeExist(@Param("anime") Anime anime);
 

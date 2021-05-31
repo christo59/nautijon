@@ -23,7 +23,7 @@ public interface JeuVideoRepository extends PagingAndSortingRepository<JeuVideo,
             "RETURN {avgScore}")
     Double updateAverageScore(@Param("avgScore") Double avgScore, @Param("jeuVideo") JeuVideo jeuVideo);
 
-    @Query("MATCH (jv:JeuVideo {titre:{jeuVideo].titre})\n +" +
+    @Query("MATCH (jv:JeuVideo {titre:{jeuVideo}.titre})\n" +
             "return count(jv) > 0")
     boolean jeuVideoExist(@Param("jeuVideo") JeuVideo jeuVideo);
 }

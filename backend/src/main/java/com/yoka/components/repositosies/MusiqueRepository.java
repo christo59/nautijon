@@ -23,7 +23,7 @@ public interface MusiqueRepository extends PagingAndSortingRepository<Musique,Lo
             "RETURN {avgScore}")
     Double updateAverageScore(@Param("avgScore") Double avgScore, @Param("musique") Musique musique);
 
-    @Query("MATCH (m:Musique {titre:{musique].titre})\n +" +
+    @Query("MATCH (m:Musique {titre:{musique}.titre})\n" +
             "return count(m) > 0")
     boolean musiqueExist(@Param("musique") Musique musique);
 }

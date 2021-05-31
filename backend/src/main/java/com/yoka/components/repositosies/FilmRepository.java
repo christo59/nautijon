@@ -23,7 +23,7 @@ public interface FilmRepository extends PagingAndSortingRepository<Film,Long> {
             "RETURN {avgScore}")
     Double updateAverageScore(@Param("avgScore") Double avgScore, @Param("film") Film film);
 
-    @Query("MATCH (f:Film {titre:{film].titre})\n +" +
+    @Query("MATCH (f:Film {titre:{film}.titre})\n" +
             "return count(f) > 0")
     boolean filmExist(@Param("film") Film film);
 }

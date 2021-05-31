@@ -23,7 +23,7 @@ public interface MangaRepository extends PagingAndSortingRepository<Manga,Long> 
             "RETURN {avgScore}")
     Double updateAverageScore(@Param("avgScore") Double avgScore, @Param("manga") Manga manga);
 
-    @Query("MATCH (m:Manga {titre:{manga].titre})\n +" +
+    @Query("MATCH (m:Manga {titre:{manga}.titre})\n" +
             "return count(m) > 0")
     boolean mangaExist(@Param("manga") Manga manga);
 }
