@@ -22,25 +22,9 @@
     text-align: center;
 }
 .boutton{
-    display: inline-block;
-    list-style-type: none;
-    width: 14%;
-}
-
-.boutton a{
-    color: blue;
-    background-color: brown;
-    text-decoration: none;
-    text-align:right;
-    display: flex;
-    font-size:35px;
-    justify-content: center;
-}
-
-.boutton:hover a{
-    color: brown;
-    background-color: blue;
-    transition: 0.5s all;
+    color: red;
+    background-color: green;
+    text-align:center;
 }
 .categorie{
     font-size: 140%;

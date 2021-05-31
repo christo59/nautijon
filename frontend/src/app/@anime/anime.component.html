@@ -10,7 +10,7 @@
         <button (click)="_isSettingPassword = false"><span>&#10008;</span></button>
     </div>
 </div>
-
+<br/>
 <table class="tableau">
     <tr>
         <td class="titre colonne" >
@@ -64,7 +64,7 @@
                 {{anime.note}}
             </td>
         </tr>
-</table>
+</table><br/>
 
 <jw-modal id="{{_addAnimeModalName}}" class="popup">
     <h1>Ajout d'un anime</h1>
@@ -95,7 +95,7 @@
     </button>
     <div *ngIf="_isMarking==true">
         <input type="number" #scoreinput />
-        <button (click)="addScore(scoreinput.value)">
+        <button (click)="addScore(scoreinput.value)" >
             <span >
                 &#10003;
             </span>
